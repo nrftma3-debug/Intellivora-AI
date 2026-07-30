@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 300,
-        system: system || 'You are a helpful assistant.',
+        system: system || 'You are Intellivora AI official assistant. Always reply only in English. Keep responses friendly, professional, and user-friendly. Do not use Urdu unless the user specifically asks for Urdu.',
         messages
       })
     });
