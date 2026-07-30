@@ -1,62 +1,131 @@
 // /api/chat.js
-// Vercel serverless function — securely proxies chat messages to the Anthropic API.
-// Your real Anthropic API key stays server-side (in the ANTHROPIC_API_KEY env var)
-// and is NEVER exposed to the browser.
+// Intellivora AI Chatbot - Vercel Serverless Function
 
 export default async function handler(req, res) {
-  // CORS (safe to keep open, or lock to your domain once live)
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
+  // CORS settings
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "POST, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type"
+  );
+
+  // Handle preflight
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  // Only POST allowed
+  if (req.method !== "POST") {
+    return res.status(405).json({
+      error: "Method not allowed"
+    });
   }
 
   try {
-    const { messages, system } = req.body;
 
-    if (!Array.isArray(messages) || messages.length === 0) {
-      return res.status(400).json({ error: 'messages array is required' });
+    const { messages } = req.body;
+
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({
+        error: "Messages are required"
+      });
     }
+
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
+
+
     if (!apiKey) {
-      return res.status(500).json({ error: 'Server misconfigured: missing ANTHROPIC_API_KEY' });
+      return res.status(500).json({
+        error: "Missing API Key"
+      });
     }
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 300,
-        system: system || 'You are Intellivora AI official assistant. Always reply only in English. Keep responses friendly, professional, and user-friendly. Do not use Urdu unless the user specifically asks for Urdu.',
-        messages
-      })
-    });
 
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error('Anthropic API error:', errText);
-      return res.status(response.status).json({ error: 'Upstream API error', detail: errText });
-    }
+    const response = await fetch(
+      "https://api.anthropic.com/v1/messages",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01"
+        },
+
+
+        body: JSON.stringify({
+
+          model: "claude-3-5-sonnet-20241022",
+
+          max_tokens: 500,
+
+
+          system: `
+You are Intellivora AI's official assistant.
+
+Rules:
+- Always reply in English only.
+- Be professional, friendly and helpful.
+- Explain Intellivora AI services clearly.
+- Help users with AI automation, chatbots, websites and business solutions.
+- Keep answers concise.
+- Do not use Urdu or any other language unless the user specifically requests it.
+          `,
+
+
+          messages: messages
+
+        })
+      }
+    );
+
 
     const data = await response.json();
-    const textBlock = (data.content || []).find(c => c.type === 'text');
-    const reply = textBlock ? textBlock.text : "Maaf kijiye, koi jawab nahi mila.";
 
-    return res.status(200).json({ reply });
-  } catch (err) {
-    console.error('Handler error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+
+    if (!response.ok) {
+
+      console.error(
+        "Anthropic Error:",
+        data
+      );
+
+      return res.status(500).json({
+        error: "AI service error"
+      });
+
+    }
+
+
+    const reply =
+      data.content?.[0]?.text ||
+      "Sorry, I could not generate a response.";
+
+
+    return res.status(200).json({
+      reply
+    });
+
+
+  } catch (error) {
+
+
+    console.error(
+      "Server Error:",
+      error
+    );
+
+
+    return res.status(500).json({
+      error: "Something went wrong"
+    });
+
   }
+
 }
