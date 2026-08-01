@@ -1,801 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intellivora AI — Autonomous Intelligence Systems</title>
-<style>
-:root{
-  --void:#030712;
-  --void-2:#0B0F19;
-  --cyan:#00F0FF;
-  --violet:#8B5CF6;
-  --crimson:#FF2E63;
-  --glass: rgba(255,255,255,0.04);
-  --border: rgba(0,240,255,0.18);
-  --text-dim: rgba(210,225,235,0.62);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+/* ==============================
+   INTELLIVORA MOBILE OPTIMIZATION
+   ============================== */
+
+@media (max-width:768px){
+
+/* Global */
 body{
-  background:var(--void);
-  color:#E8F2F7;
-  font-family:'IV Sans', 'Inter', system-ui, sans-serif;
-  overflow-x:hidden;
-  cursor:none;
-}
-@media (max-width: 900px){ body{cursor:auto;} #cursor-dot,#cursor-ring{display:none;} }
-
-@font-face{
-  font-family:'IV Sans';
-  src: local('Arial');
+    cursor:auto;
 }
 
-::selection{ background:var(--violet); color:#000; }
-
-/* ---------- BACKDROP GRID ---------- */
-.grid-backdrop{
-  position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(0,240,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,240,255,0.045) 1px, transparent 1px);
-  background-size:56px 56px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 30%, transparent 90%);
-}
-.scanlines{
-  position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.35;
-  background:repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 2px, transparent 4px);
-}
-.vignette{
-  position:fixed;inset:0;z-index:2;pointer-events:none;
-  background:radial-gradient(ellipse 120% 90% at 50% 0%, transparent 40%, rgba(3,7,18,0.9) 100%);
+.wrap{
+    padding:0 18px;
 }
 
-/* ---------- CURSOR ---------- */
-#cursor-dot,#cursor-ring{
-  position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
-  border-radius:50%; transform:translate(-50%,-50%);
-}
-#cursor-dot{ width:6px;height:6px; background:var(--cyan); box-shadow:0 0 10px var(--cyan), 0 0 20px var(--cyan); }
-#cursor-ring{ width:34px;height:34px; border:1px solid rgba(0,240,255,0.5); transition:width .25s,height .25s,border-color .25s,background .25s; }
-#cursor-ring.hover{ width:64px;height:64px; background:rgba(0,240,255,0.08); border-color:var(--violet); }
 
-/* ---------- NAV ---------- */
+/* Navbar */
 nav{
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:22px 48px;
-  backdrop-filter: blur(14px);
-  background:rgba(3,7,18,0.35);
-  border-bottom:1px solid rgba(0,240,255,0.08);
+    padding:16px 18px;
 }
+
 .logo{
-  font-family:'JetBrains Mono', monospace;
-  font-weight:700; font-size:18px; letter-spacing:2px;
-  display:flex; align-items:center; gap:10px;
+    font-size:15px;
+    letter-spacing:1px;
 }
-.logo .dot{ width:8px;height:8px;border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); animation:pulse 2s infinite; }
-.logo-fullform{ font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:1px; color:var(--text-dim); text-transform:uppercase; margin-top:3px; opacity:.7; }
-@media(max-width:768px){ .logo-fullform{ display:none; } }
-@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
-nav ul{ list-style:none; display:flex; gap:38px; }
-nav a{ color:var(--text-dim); text-decoration:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; transition:color .25s; position:relative; }
-nav a:hover{ color:var(--cyan); }
-nav a::after{ content:''; position:absolute; bottom:-6px; left:0; width:0; height:1px; background:var(--cyan); transition:width .3s; }
-nav a:hover::after{ width:100%; }
 
-/* ---------- SECTION WRAPPER ---------- */
-section{ position:relative; z-index:3; }
-.wrap{ max-width:1280px; margin:0 auto; padding:0 48px; }
-@media(max-width:768px){ .wrap{padding:0 22px;} nav{padding:18px 22px;} nav ul{display:none;} }
+.logo-fullform{
+    display:none;
+}
 
-/* ---------- HERO ---------- */
+
+/* Hero */
 #hero{
-  min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; position:relative; padding-top:100px;
+    min-height:100svh;
+    padding:120px 18px 80px;
 }
-#hero-canvas{ position:absolute; inset:0; z-index:0; }
-.hero-inner{ position:relative; z-index:2; max-width:920px; }
+
+.hero-inner{
+    width:100%;
+}
+
 .eyebrow{
-  font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:4px; color:var(--cyan);
-  text-transform:uppercase; margin-bottom:26px; opacity:0;
-  display:inline-flex; align-items:center; gap:10px; padding:8px 18px;
-  border:1px solid var(--border); border-radius:100px; background:rgba(0,240,255,0.04);
+    font-size:9px;
+    letter-spacing:2px;
+    padding:7px 12px;
 }
-.eyebrow::before{ content:''; width:6px;height:6px;border-radius:50%; background:var(--crimson); box-shadow:0 0 8px var(--crimson); animation:pulse 1.4s infinite; }
 
 h1.hero-title{
-  font-size:clamp(2.6rem, 6vw, 5.4rem);
-  font-weight:800; line-height:1.04; letter-spacing:-1px;
-  margin-bottom:26px;
+    font-size:2.4rem;
+    line-height:1.15;
+    letter-spacing:-0.5px;
 }
-h1.hero-title .line{ overflow:hidden; display:block; }
-h1.hero-title span{ display:inline-block; will-change:transform; }
-.grad{ background:linear-gradient(120deg, var(--cyan), var(--violet) 60%, var(--cyan)); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:sheen 6s linear infinite; }
-@keyframes sheen{ to{ background-position:200% center; } }
 
-.hero-sub{ font-size:clamp(1rem,1.4vw,1.2rem); color:var(--text-dim); max-width:640px; margin:0 auto 42px; line-height:1.65; opacity:0;}
+.hero-sub{
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
 
-.cta-row{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap; opacity:0; margin-bottom:64px;}
+
+/* Buttons */
+.cta-row{
+    flex-direction:column;
+    width:100%;
+    gap:14px;
+}
+
 .btn{
-  position:relative; padding:16px 34px; border-radius:10px; font-size:14px; font-weight:700;
-  letter-spacing:1px; text-transform:uppercase; text-decoration:none; cursor:none;
-  display:inline-flex; align-items:center; gap:10px; border:1px solid transparent;
-  font-family:inherit;
+    width:100%;
+    justify-content:center;
+    padding:15px 20px;
+    cursor:pointer;
 }
-.btn-primary{
-  background:linear-gradient(120deg, var(--cyan), #00b8c9);
-  color:#01131a; box-shadow:0 0 24px rgba(0,240,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.2);
-}
-.btn-primary:hover{ box-shadow:0 0 40px rgba(0,240,255,0.6), inset 0 0 0 1px rgba(255,255,255,0.3); }
-.btn-ghost{
-  background:rgba(255,255,255,0.03); color:#E8F2F7; border:1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(10px);
-}
-.btn-ghost:hover{ border-color:var(--violet); background:rgba(139,92,246,0.08); }
 
-/* HUD ticker */
+
+/* Ticker */
 .ticker{
-  width:100%; max-width:920px; margin:0 auto; opacity:0;
-  border:1px solid var(--border); border-radius:12px; background:rgba(6,12,22,0.55);
-  backdrop-filter: blur(12px);
-  font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:1px;
-  padding:14px 22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    flex-direction:column;
+    padding:15px;
+    gap:12px;
+    font-size:11px;
 }
-.ticker .item{ display:flex; align-items:center; gap:8px; color:var(--text-dim); }
-.ticker .item b{ color:var(--cyan); font-weight:700; }
-.ticker .item.ok b{ color:#4ade80; }
-.blink{ animation:pulse 1.5s infinite; }
 
-.scroll-cue{
-  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
-  font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--text-dim);
-  display:flex; flex-direction:column; align-items:center; gap:8px; z-index:3;
+
+/* Services */
+#services{
+    padding:90px 0 70px;
 }
-.scroll-cue .bar{ width:1px;height:34px; background:linear-gradient(var(--cyan), transparent); animation:scrolldown 1.8s infinite; }
-@keyframes scrolldown{ 0%{ transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 51%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;} }
 
-/* ---------- SECTION HEADERS ---------- */
-.section-head{ text-align:center; max-width:720px; margin:0 auto 70px; }
-.section-tag{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:4px; color:var(--violet); text-transform:uppercase; margin-bottom:16px; }
-.section-title{ font-size:clamp(1.8rem,3.4vw,2.9rem); font-weight:800; letter-spacing:-0.5px; margin-bottom:18px; }
-.section-desc{ color:var(--text-dim); font-size:1.02rem; line-height:1.7; }
-
-#services{ padding:160px 0 120px; }
-
-/* ---------- SERVICE MATRIX ---------- */
-.matrix{ display:grid; grid-template-columns:repeat(12,1fr); gap:22px; }
-.card{
-  grid-column:span 4; position:relative; border-radius:16px; padding:32px 28px;
-  background:var(--glass); border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px); overflow:hidden; opacity:0; transform:translateY(50px) scale(.96);
-  transition:border-color .35s, box-shadow .35s, transform .35s;
+.section-head{
+    margin-bottom:40px;
 }
-.card::before{
-  content:''; position:absolute; inset:0; border-radius:16px; padding:1px;
-  background:linear-gradient(140deg, rgba(0,240,255,0.5), transparent 40%, rgba(139,92,246,0.4));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity .35s;
-}
-.card:hover::before{ opacity:1; }
-.card:hover{ transform:translateY(-6px) scale(1.01); box-shadow:0 20px 60px rgba(0,240,255,0.08); }
-.card .icon{ font-size:30px; margin-bottom:20px; display:inline-block; filter:drop-shadow(0 0 10px rgba(0,240,255,0.5)); }
-.card h3{ font-size:1.25rem; margin-bottom:12px; letter-spacing:-0.2px; }
-.card p{ color:var(--text-dim); font-size:.92rem; line-height:1.6; margin-bottom:18px; }
-.tags{ display:flex; flex-wrap:wrap; gap:8px; }
-.tag{
-  font-family:'JetBrains Mono',monospace; font-size:11px; padding:5px 12px; border-radius:100px;
-  border:1px solid rgba(0,240,255,0.25); color:var(--cyan); background:rgba(0,240,255,0.05);
-}
-.card.wide{ grid-column:span 8; }
-.card.big{ grid-column:span 12; }
-@media(max-width:900px){ .card, .card.wide, .card.big{ grid-column:span 12; } }
 
-/* ---------- FLOW DIAGRAM ---------- */
-.flow{ display:flex; align-items:center; flex-wrap:wrap; gap:0; margin-top:10px; }
+.section-tag{
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+.section-title{
+    font-size:2rem;
+}
+
+.section-desc{
+    font-size:15px;
+}
+
+
+.matrix{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+
+.card,
+.card.big,
+.card.wide{
+    width:100%;
+    padding:25px 20px;
+}
+
+
+.card h3{
+    font-size:1.1rem;
+}
+
+.card p{
+    font-size:14px;
+}
+
+
+/* Flow */
+.flow{
+    flex-direction:column;
+    align-items:center;
+}
+
 .flow-node{
-  font-family:'JetBrains Mono',monospace; font-size:12px; padding:14px 18px; border-radius:10px;
-  border:1px solid var(--border); background:rgba(0,240,255,0.04); white-space:nowrap; color:#cdefff;
-  position:relative;
+    white-space:normal;
+    text-align:center;
+    width:100%;
 }
-.flow-node.active{ border-color:var(--cyan); box-shadow:0 0 20px rgba(0,240,255,0.4); color:var(--cyan); }
-.flow-arrow{ color:var(--violet); font-size:18px; padding:0 12px; opacity:.7; }
-@media(max-width:768px){ .flow{ flex-direction:column; align-items:flex-start; } .flow-arrow{ transform:rotate(90deg); padding:8px 0; } }
 
-/* ---------- STATS STRIP ---------- */
-.stats-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border-radius:14px; overflow:hidden; margin:100px 0; border:1px solid rgba(255,255,255,0.06); }
-.stat-box{ background:var(--void-2); padding:34px 20px; text-align:center; }
-.stat-num{ font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:800; color:var(--cyan); text-shadow:0 0 20px rgba(0,240,255,0.4); }
-.stat-label{ font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-top:6px; }
-@media(max-width:768px){ .stats-strip{ grid-template-columns:repeat(2,1fr); } }
+.flow-arrow{
+    transform:rotate(90deg);
+}
 
-/* ---------- DEMO SECTION ---------- */
-#demo{ padding:120px 0; position:relative; }
-.demo-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
-@media(max-width:900px){ .demo-grid{ grid-template-columns:1fr; } }
+
+/* Stats */
+.stats-strip{
+    grid-template-columns:1fr;
+    margin:60px 0;
+}
+
+.stat-num{
+    font-size:2rem;
+}
+
+
+/* Demo */
+#demo{
+    padding:80px 0;
+}
+
+
+.demo-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+}
+
 
 .chat-window{
-  border-radius:18px; border:1px solid var(--border); background:rgba(6,12,22,0.7); backdrop-filter:blur(18px);
-  overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5);
+    width:100%;
 }
-.chat-head{ display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
-.chat-head .name{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; color:var(--cyan); }
-.chat-head .status{ display:flex; align-items:center; gap:6px; font-size:11px; color:#4ade80; font-family:'JetBrains Mono',monospace;}
-.chat-head .status .d{ width:6px;height:6px;border-radius:50%;background:#4ade80; box-shadow:0 0 8px #4ade80; }
-.chat-body{ padding:22px; min-height:280px; display:flex; flex-direction:column; gap:14px; }
-.bubble{ max-width:78%; padding:12px 16px; border-radius:12px; font-size:.88rem; line-height:1.5; opacity:0; }
-.bubble.bot{ background:rgba(0,240,255,0.08); border:1px solid rgba(0,240,255,0.2); align-self:flex-start; border-bottom-left-radius:2px; }
-.bubble.user{ background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); align-self:flex-end; border-bottom-right-radius:2px; }
-.typing{ display:flex; gap:4px; align-self:flex-start; padding:12px 16px; }
-.typing span{ width:6px;height:6px;border-radius:50%; background:var(--cyan); animation:typingdot 1.2s infinite ease-in-out; }
-.typing span:nth-child(2){ animation-delay:.2s; } .typing span:nth-child(3){ animation-delay:.4s; }
-@keyframes typingdot{ 0%,60%,100%{ transform:translateY(0); opacity:.4; } 30%{ transform:translateY(-5px); opacity:1; } }
-.chat-input{ display:flex; gap:10px; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08); }
-.chat-input input{ flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:10px 14px; color:#fff; font-family:inherit; font-size:.85rem; }
-.chat-input input:focus{ outline:none; border-color:var(--cyan); }
-.chat-input button{ background:var(--cyan); border:none; border-radius:8px; padding:0 18px; color:#01131a; font-weight:700; cursor:none; }
 
-/* ---------- ROI CALC ---------- */
-.roi-card{ border-radius:18px; border:1px solid var(--border); background:rgba(6,12,22,0.55); backdrop-filter:blur(18px); padding:34px; }
-.roi-row{ margin-bottom:28px; }
-.roi-row label{ display:flex; justify-content:space-between; font-size:.85rem; color:var(--text-dim); margin-bottom:12px; font-family:'JetBrains Mono',monospace; }
-.roi-row label b{ color:var(--cyan); font-size:1rem; }
-input[type=range]{
-  -webkit-appearance:none; width:100%; height:4px; border-radius:4px; background:rgba(255,255,255,0.1); outline:none;
+.chat-body{
+    min-height:220px;
+    padding:15px;
 }
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none; width:18px;height:18px; border-radius:50%;
-  background:var(--cyan); box-shadow:0 0 14px var(--cyan); cursor:none; border:2px solid #01131a;
+
+
+.bubble{
+    max-width:90%;
+    font-size:13px;
 }
-.roi-results{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:30px; }
-.roi-result{ background:rgba(0,240,255,0.04); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; }
-.roi-result .val{ font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:800; color:var(--cyan); }
-.roi-result .lab{ font-size:11px; color:var(--text-dim); letter-spacing:1.5px; text-transform:uppercase; margin-top:6px; }
 
-/* ---------- SOCIAL PROOF ---------- */
-#proof{ padding:100px 0; }
-.logo-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); border-radius:14px; overflow:hidden;}
-.logo-cell{ background:var(--void-2); padding:34px 20px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:.85rem; letter-spacing:1px; color:var(--text-dim); transition:color .3s, text-shadow .3s; }
-.logo-cell:hover{ color:var(--cyan); text-shadow:0 0 12px rgba(0,240,255,0.6); }
-@media(max-width:768px){ .logo-grid{ grid-template-columns:repeat(2,1fr);} }
 
-/* ---------- FINAL CTA ---------- */
-#final-cta{ padding:160px 0; text-align:center; position:relative; }
+.chat-input{
+    padding:12px;
+}
+
+
+.chat-input input{
+    width:70%;
+}
+
+
+.chat-input button{
+    padding:0 12px;
+}
+
+
+/* ROI */
+.roi-card{
+    padding:22px 18px;
+}
+
+.roi-results{
+    grid-template-columns:1fr;
+}
+
+
+/* Proof */
+#proof{
+    padding:70px 0;
+}
+
+
+.logo-grid{
+    grid-template-columns:1fr;
+}
+
+
+/* Final CTA */
+#final-cta{
+    padding:90px 0;
+}
+
+
 .terminal{
-  max-width:820px; margin:0 auto; border:1px solid var(--border); border-radius:16px;
-  background:rgba(6,12,22,0.7); backdrop-filter:blur(18px); padding:50px 40px; position:relative; overflow:hidden;
-}
-.terminal::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent, rgba(0,240,255,0.06)); pointer-events:none; }
-.term-bar{ display:flex; gap:6px; margin-bottom:26px; }
-.term-dot{ width:10px;height:10px;border-radius:50%; }
-.term-dot:nth-child(1){ background:#FF5F56; } .term-dot:nth-child(2){ background:#FFBD2E; } .term-dot:nth-child(3){ background:#27C93F; }
-.terminal h2{ font-size:clamp(1.8rem,3.6vw,3rem); font-weight:800; margin-bottom:18px; }
-.terminal p{ color:var(--text-dim); margin-bottom:36px; font-family:'JetBrains Mono',monospace; font-size:.9rem; }
-.terminal p::before{ content:'> '; color:var(--cyan); }
-.cursor-blink{ display:inline-block; width:9px; height:1.1em; background:var(--cyan); vertical-align:middle; margin-left:4px; animation:pulse 1s infinite; }
-
-/* ---------- FOOTER ---------- */
-footer{ border-top:1px solid rgba(255,255,255,0.08); padding:60px 0 30px; }
-.foot-grid{ display:grid; grid-template-columns:1.8fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
-.foot-col h4{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:18px; font-family:'JetBrains Mono',monospace; }
-.foot-col a{ display:block; color:var(--text-dim); text-decoration:none; font-size:.88rem; margin-bottom:10px; transition:color .25s; }
-.foot-col a:hover{ color:#fff; }
-.foot-bottom{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:26px; border-top:1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim); letter-spacing:1px; }
-.foot-bottom .status{ display:flex; align-items:center; gap:8px; }
-.foot-bottom .status .d{ width:7px;height:7px;border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80; animation:pulse 2s infinite; }
-@media(max-width:900px){ .foot-grid{ grid-template-columns:1fr 1fr; } }
-</style>
-</head>
-<body>
-
-<div class="grid-backdrop"></div>
-<div class="scanlines"></div>
-<div class="vignette"></div>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<nav>
-  <div>
-    <div class="logo"><span class="dot"></span>INTELLIVORA <span style="color:var(--cyan)">AI</span></div>
-    <div class="logo-fullform">Intelligent Virtual Operations &amp; Revolutionary Automation</div>
-  </div>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#proof">Proof</a></li>
-    <li><a href="#final-cta">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-inner">
-    <div class="eyebrow">INTELLIVORA AI // NEURAL OPERATIONS</div>
-    <h1 class="hero-title">
-      <span class="line"><span>Powering the</span></span>
-      <span class="line"><span class="grad">Autonomous Future</span></span>
-      <span class="line"><span>with Next-Gen AI.</span></span>
-    </h1>
-    <p class="hero-sub">We engineer custom AI chatbots, smart workflow automations, and autonomous AI agents that scale your business 24/7 — no downtime, no missed leads, no limits.</p>
-    <div class="cta-row">
-      <a href="#final-cta" class="btn btn-primary magnetic">⚡ Book Live AI Audit</a>
-      <a href="#services" class="btn btn-ghost magnetic">Explore Ecosystem</a>
-    </div>
-    <div class="ticker">
-      <div class="item ok"><span class="blink">●</span> STATUS: <b>SYSTEM ONLINE</b></div>
-      <div class="item">AI BOTS ACTIVE: <b id="botCount">1,420+</b></div>
-      <div class="item">AUTOMATION SUCCESS: <b>99.8%</b></div>
-      <div class="item">UPTIME: <b>24/7</b></div>
-    </div>
-  </div>
-  <div class="scroll-cue">SCROLL<div class="bar"></div></div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-tag">CORE SERVICES MATRIX</div>
-      <div class="section-title">Six systems. One autonomous engine.</div>
-      <div class="section-desc">Every deployment is modular — pick a single system or run the full Intellivora stack across your entire operation.</div>
-    </div>
-
-    <div class="matrix">
-      <div class="card wide">
-        <span class="icon">🤖</span>
-        <h3>AI Chatbot Solutions <span style="color:var(--text-dim);font-weight:400;font-size:.9rem;">— Omni-Channel</span></h3>
-        <p>Custom bots deployed across Web, WhatsApp, Instagram & Facebook DMs — built for customer support, lead generation, and appointment booking, trained on your business data.</p>
-        <div class="tags">
-          <span class="tag">Clinics</span><span class="tag">E-Commerce</span><span class="tag">Real Estate</span><span class="tag">Restaurants</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="icon">🌐</span>
-        <h3>AI-Integrated Web Systems</h3>
-        <p>Dynamic landing pages, e-commerce stores, custom portals, and booking engines with AI embedded directly into the experience.</p>
-      </div>
-
-      <div class="card big">
-        <span class="icon">⚡</span>
-        <h3>Business Workflow Automations</h3>
-        <p style="max-width:520px;">Make.com & Zapier integrations, CRM synchronization, auto-invoicing, email follow-ups, and data entry — fully automated end to end.</p>
-        <div class="flow">
-          <div class="flow-node" data-step="0">New Customer Signal</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="1">Instant AI Reply</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="2">CRM Entry</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="3">Auto Follow-up Email Sent</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="icon">🧠</span>
-        <h3>Autonomous AI Agents</h3>
-        <p>Voice AI agents, AI receptionists, sales reps, research assistants, and internal ops employees — your digital workforce, always on shift.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📈</span>
-        <h3>Enterprise AI Consulting</h3>
-        <p>Custom AI architecture design, workflow auditing, tool integration, and team onboarding for organizations scaling fast.</p>
-      </div>
-      <div class="card big">
-        <span class="icon">📱</span>
-        <h3>Full-Cycle App Development <span style="color:var(--text-dim);font-weight:400;font-size:.9rem;">— A to Z, Fully Automated</span></h3>
-        <p style="max-width:640px;">Complete mobile & web apps built from scratch for your company — design, backend, database, AI integration, deployment, and maintenance, all under one roof. Har cheez cover hoti hai: UI/UX, payments, notifications, admin dashboards, aur end-to-end automation baked right in.</p>
-        <div class="tags">
-          <span class="tag">iOS & Android</span><span class="tag">Web Apps</span><span class="tag">Admin Dashboards</span><span class="tag">Cloud & Hosting</span><span class="tag">Ongoing Maintenance</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="icon">🛰️</span>
-        <h3>24/7 Monitoring & Support</h3>
-        <p>Live system diagnostics, uptime guarantees, and a dedicated ops channel — your automations never run unsupervised.</p>
-      </div>
-
-      <div class="card big">
-        <span class="icon">📱</span>
-        <h3>Full-Cycle App Development <span style="color:var(--text-dim);font-weight:400;font-size:.9rem;">— A to Z Build</span></h3>
-        <p style="max-width:560px;">We design and build your entire mobile or web app from scratch — UI/UX, backend, database, hosting, and deployment — with AI-powered automation wired into every core feature from day one.</p>
-        <div class="flow">
-          <div class="flow-node" data-step="0">Idea & Planning</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="1">UI/UX Design</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="2">Backend + AI Integration</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="3">Testing</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-node" data-step="4">Launch & Maintenance</div>
-        </div>
-        <div class="tags" style="margin-top:18px;">
-          <span class="tag">iOS</span><span class="tag">Android</span><span class="tag">Web Apps</span><span class="tag">SaaS Platforms</span><span class="tag">Admin Dashboards</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-strip">
-      <div class="stat-box"><div class="stat-num" data-count="1420">0</div><div class="stat-label">Bots Deployed</div></div>
-      <div class="stat-box"><div class="stat-num" data-count="99" data-suffix=".8%">0</div><div class="stat-label">Automation Success</div></div>
-      <div class="stat-box"><div class="stat-num" data-count="47" data-suffix="+">0</div><div class="stat-label">Industries Served</div></div>
-      <div class="stat-box"><div class="stat-num" data-count="24" data-suffix="/7">0</div><div class="stat-label">Live Monitoring</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMO -->
-<section id="demo">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-tag">LIVE INTERFACE</div>
-      <div class="section-title">See it. Test it. Trust it.</div>
-      <div class="section-desc">A live preview of an Intellivora bot, and a real-time calculator showing exactly what automation is worth to your business.</div>
-    </div>
-    <div class="demo-grid">
-      <div>
-        <div class="chat-window">
-          <div class="chat-head">
-            <div class="name">INTELLIVORA_BOT // v4.2</div>
-            <div class="status"><span class="d"></span>ONLINE</div>
-          </div>
-          <div class="chat-body" id="chatBody">
-            <div class="bubble bot">Hi 👋 I'm the Intellivora AI assistant — ask me anything about automation, or say salam, main Urdu mein bhi baat kar sakta hoon!</div>
-          </div>
-          <div class="chat-input">
-            <input id="chatInput" type="text" placeholder="Ask anything — English ya Urdu mein bhi puch sakte hain..." />
-            <button id="chatSend">Send</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="roi-card">
-        <h3 style="margin-bottom:24px;font-size:1.1rem;">⚙️ AI ROI Calculator</h3>
-        <div class="roi-row">
-          <label>Team Size <b id="teamVal">10</b></label>
-          <input type="range" id="teamSize" min="1" max="100" value="10">
-        </div>
-        <div class="roi-row">
-          <label>Monthly Customer Queries <b id="queryVal">2,000</b></label>
-          <input type="range" id="queryVol" min="100" max="20000" step="100" value="2000">
-        </div>
-        <div class="roi-results">
-          <div class="roi-result"><div class="val" id="hoursSaved">0</div><div class="lab">Hours Saved / Mo</div></div>
-          <div class="roi-result"><div class="val" id="costSaved">$0</div><div class="lab">Cost Saved / Mo</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF -->
-<section id="proof">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-tag">TRUSTED BY OPERATORS</div>
-      <div class="section-title">Deployed across every vertical that can't afford downtime.</div>
-    </div>
-    <div class="logo-grid">
-      <div class="logo-cell">NEXORA CLINICS</div>
-      <div class="logo-cell">VELOCITY RETAIL</div>
-      <div class="logo-cell">PRIME ESTATES</div>
-      <div class="logo-cell">FORGE LOGISTICS</div>
-      <div class="logo-cell">ATLAS CAPITAL</div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="final-cta">
-  <div class="wrap">
-    <div class="terminal">
-      <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span></div>
-      <h2>Ready to Automate Your Business?</h2>
-      <p>initiate_deployment --client=you --status=pending<span class="cursor-blink"></span></p>
-      <div class="cta-row" style="margin-bottom:0;">
-        <a href="#" class="btn btn-primary magnetic">⚡ Book Live AI Audit</a>
-        <a href="#" class="btn btn-ghost magnetic">Talk to Our Team</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <div class="logo" style="margin-bottom:6px;"><span class="dot"></span>INTELLIVORA AI</div>
-        <div class="logo-fullform" style="margin-bottom:14px;">Intelligent Virtual Operations &amp; Revolutionary Automation</div>
-        <p style="color:var(--text-dim); font-size:.88rem; max-width:280px; line-height:1.6;">Autonomous AI systems for businesses that refuse to slow down.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Systems</h4>
-        <a href="#services">Chatbots</a>
-        <a href="#services">Automations</a>
-        <a href="#services">AI Agents</a>
-        <a href="#services">Consulting</a>
-      </div>
-      <div class="foot-col">
-        <h4>Contact</h4>
-        <a href="https://instagram.com/intellivora.ai" target="_blank" rel="noopener">📸 @intellivora.ai</a>
-        <a href="https://linkedin.com/company/intellivora-ai" target="_blank" rel="noopener">💼 LinkedIn</a>
-        <a href="mailto:intellivoraai@gmail.com">✉️ intellivoraai@gmail.com</a>
-      </div>
-      <div class="foot-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Security</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <div>© 2026 INTELLIVORA AI SYSTEMS. ALL RIGHTS RESERVED.</div>
-      <div class="status"><span class="d"></span>SERVER STATUS: OPERATIONAL — PING <span id="pingVal">14ms</span></div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-gsap.registerPlugin(ScrollTrigger);
-
-/* ---------------- CURSOR ---------------- */
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-function animCursor(){ rx += (mx-rx)*0.18; ry += (my-ry)*0.18; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animCursor); }
-animCursor();
-document.querySelectorAll('a,button,input[type=range],.card').forEach(el=>{
-  el.addEventListener('mouseenter', ()=> ring.classList.add('hover'));
-  el.addEventListener('mouseleave', ()=> ring.classList.remove('hover'));
-});
-
-/* magnetic buttons */
-document.querySelectorAll('.magnetic').forEach(btn=>{
-  btn.addEventListener('mousemove', e=>{
-    const r = btn.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width/2;
-    const y = e.clientY - r.top - r.height/2;
-    gsap.to(btn, {x:x*0.35, y:y*0.35, duration:0.4, ease:'power2.out'});
-  });
-  btn.addEventListener('mouseleave', ()=> gsap.to(btn, {x:0,y:0,duration:0.5,ease:'elastic.out(1,0.4)'}));
-});
-
-/* ---------------- THREE.JS HERO PARTICLE NEURAL MESH ---------------- */
-const canvas = document.getElementById('hero-canvas');
-const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-camera.position.z = 34;
-
-const group = new THREE.Group();
-scene.add(group);
-
-// particle sphere
-const PARTICLE_COUNT = 900;
-const positions = new Float32Array(PARTICLE_COUNT*3);
-const radius = 13;
-for(let i=0;i<PARTICLE_COUNT;i++){
-  const phi = Math.acos(-1 + (2*i)/PARTICLE_COUNT);
-  const theta = Math.sqrt(PARTICLE_COUNT*Math.PI) * phi;
-  positions[i*3] = radius * Math.cos(theta) * Math.sin(phi);
-  positions[i*3+1] = radius * Math.sin(theta) * Math.sin(phi);
-  positions[i*3+2] = radius * Math.cos(phi);
-}
-const geo = new THREE.BufferGeometry();
-geo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-const mat = new THREE.PointsMaterial({ color:0x00F0FF, size:0.16, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending });
-const points = new THREE.Points(geo, mat);
-group.add(points);
-
-// neural connecting lines (nearest neighbor subset for perf)
-const lineMat = new THREE.LineBasicMaterial({ color:0x8B5CF6, transparent:true, opacity:0.12 });
-const linePositions = [];
-for(let i=0;i<220;i++){
-  const a = Math.floor(Math.random()*PARTICLE_COUNT);
-  const b = Math.floor(Math.random()*PARTICLE_COUNT);
-  linePositions.push(positions[a*3],positions[a*3+1],positions[a*3+2]);
-  linePositions.push(positions[b*3],positions[b*3+1],positions[b*3+2]);
-}
-const lineGeo = new THREE.BufferGeometry();
-lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions),3));
-const lines = new THREE.LineSegments(lineGeo, lineMat);
-group.add(lines);
-
-// outer wire ring
-const ringGeo = new THREE.TorusGeometry(18, 0.04, 8, 100);
-const ringMat = new THREE.MeshBasicMaterial({ color:0x00F0FF, transparent:true, opacity:0.25 });
-const ring3d = new THREE.Mesh(ringGeo, ringMat);
-ring3d.rotation.x = Math.PI/2.3;
-group.add(ring3d);
-
-let mouseX=0, mouseY=0;
-window.addEventListener('mousemove', e=>{
-  mouseX = (e.clientX/window.innerWidth - 0.5);
-  mouseY = (e.clientY/window.innerHeight - 0.5);
-});
-
-function animate(){
-  requestAnimationFrame(animate);
-  group.rotation.y += 0.0016;
-  group.rotation.x += (mouseY*0.4 - group.rotation.x)*0.03;
-  group.rotation.y += (mouseX*0.001);
-  points.rotation.y += 0.0004;
-  renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', ()=>{
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// scroll depth affects camera
-ScrollTrigger.create({
-  trigger:'#hero', start:'top top', end:'bottom top', scrub:true,
-  onUpdate: self=>{ camera.position.z = 34 + self.progress*24; group.rotation.z = self.progress*0.6; }
-});
-
-/* ---------------- GSAP INTRO TIMELINE ---------------- */
-const tl = gsap.timeline({ defaults:{ ease:'power4.out' } });
-tl.to('.eyebrow', { opacity:1, y:0, duration:0.8, delay:0.2 })
-  .from('h1.hero-title .line span', { yPercent:120, duration:1, stagger:0.12 }, '-=0.5')
-  .to('.hero-sub', { opacity:1, duration:0.9 }, '-=0.4')
-  .to('.cta-row', { opacity:1, duration:0.8 }, '-=0.5')
-  .to('.ticker', { opacity:1, duration:0.8 }, '-=0.4');
-
-/* card reveal */
-gsap.utils.toArray('.card').forEach((card,i)=>{
-  gsap.to(card, {
-    opacity:1, y:0, scale:1, duration:0.9, ease:'power3.out',
-    scrollTrigger:{ trigger:card, start:'top 88%' },
-    delay: (i%3)*0.08
-  });
-});
-
-/* stat counters */
-gsap.utils.toArray('.stat-num').forEach(el=>{
-  const target = parseFloat(el.dataset.count);
-  const suffix = el.dataset.suffix || '+';
-  ScrollTrigger.create({
-    trigger: el, start:'top 90%', once:true,
-    onEnter:()=>{
-      gsap.to({val:0}, { val:target, duration:1.6, ease:'power2.out',
-        onUpdate: function(){ el.textContent = Math.floor(this.targets()[0].val) + suffix; }
-      });
-    }
-  });
-});
-
-/* flow diagram sequential highlight */
-ScrollTrigger.create({
-  trigger:'.flow', start:'top 75%',
-  onEnter: ()=>{
-    const nodes = document.querySelectorAll('.flow-node');
-    nodes.forEach((n,i)=>{
-      gsap.delayedCall(i*0.5, ()=> n.classList.add('active'));
-    });
-  }
-});
-
-/* section headers fade */
-gsap.utils.toArray('.section-head').forEach(el=>{
-  gsap.from(el, { opacity:0, y:40, duration:1, scrollTrigger:{ trigger:el, start:'top 85%' } });
-});
-gsap.from('.roi-card', { opacity:0, y:50, duration:1, scrollTrigger:{ trigger:'.roi-card', start:'top 85%' } });
-gsap.from('.chat-window', { opacity:0, y:50, duration:1, scrollTrigger:{ trigger:'.chat-window', start:'top 85%' } });
-gsap.from('.terminal', { opacity:0, scale:0.94, duration:1, scrollTrigger:{ trigger:'.terminal', start:'top 85%' } });
-gsap.from('.logo-cell', { opacity:0, y:20, duration:0.6, stagger:0.08, scrollTrigger:{ trigger:'.logo-grid', start:'top 88%' } });
-
-/* ---------------- ROI CALCULATOR ---------------- */
-const teamSize = document.getElementById('teamSize');
-const queryVol = document.getElementById('queryVol');
-const teamVal = document.getElementById('teamVal');
-const queryVal = document.getElementById('queryVal');
-const hoursSaved = document.getElementById('hoursSaved');
-const costSaved = document.getElementById('costSaved');
-
-function updateROI(){
-  const team = parseInt(teamSize.value);
-  const queries = parseInt(queryVol.value);
-  teamVal.textContent = team;
-  queryVal.textContent = queries.toLocaleString();
-  // model: each query manually handled takes ~4 minutes; automation handles 92% of them
-  const minutesSavedPerMonth = queries * 4 * 0.92;
-  const hrs = Math.round(minutesSavedPerMonth/60);
-  const hourlyRate = 22; // blended staff cost estimate
-  const cost = Math.round(hrs * hourlyRate);
-  gsap.to(hoursSaved, { textContent: hrs, duration:0.6, snap:'textContent', onUpdate:function(){ hoursSaved.textContent = Math.floor(hoursSaved.textContent).toLocaleString(); } });
-  costSaved.textContent = '$' + cost.toLocaleString();
-}
-teamSize.addEventListener('input', updateROI);
-queryVol.addEventListener('input', updateROI);
-updateROI();
-
-/* ---------------- LIVE CHAT DEMO — Real AI (bilingual Urdu/English) ---------------- */
-const chatBody = document.getElementById('chatBody');
-const chatInput = document.getElementById('chatInput');
-const chatSend = document.getElementById('chatSend');
-
-const SYSTEM_PROMPT = `You are the official AI assistant embedded on the Intellivora AI website (Intelligent Virtual Operations & Revolutionary Automation). Intellivora AI is an elite AI automation agency offering: AI chatbot solutions (web, WhatsApp, Instagram/FB DMs) for clinics, e-commerce, real estate, restaurants; business workflow automations (Make.com, Zapier, CRM sync, auto-invoicing, email follow-ups); AI-integrated web systems (landing pages, stores, portals, booking engines); autonomous AI agents (voice agents, receptionists, sales reps, research assistants); enterprise AI consulting; and full-cycle A-to-Z app development (iOS, Android, web, dashboards, hosting, maintenance). Contact: Instagram @intellivora.ai, Email intellivoraai@gmail.com.
-
-Respond naturally and intelligently to ANY question the visitor asks — not just canned topics. If the user writes in Urdu or Roman Urdu, reply fluently in the same style (Urdu script or Roman Urdu, matching them). If they write in English, reply in English. Keep answers helpful, confident, concise (2-4 sentences max, this is a chat widget). Be warm and consultative, not robotic. If asked something totally unrelated to the business, still answer it helpfully like a smart general assistant, then gently loop back to how Intellivora could help if relevant.`;
-
-let chatHistory = [];
-
-function addBubble(text, cls){
-  const b = document.createElement('div');
-  b.className = 'bubble ' + cls;
-  b.textContent = text;
-  chatBody.appendChild(b);
-  gsap.to(b, { opacity:1, duration:0.4 });
-  chatBody.scrollTop = chatBody.scrollHeight;
-  return b;
+    padding:30px 18px;
 }
 
-function showTyping(){
-  const typing = document.createElement('div');
-  typing.className = 'typing';
-  typing.innerHTML = '<span></span><span></span><span></span>';
-  chatBody.appendChild(typing);
-  chatBody.scrollTop = chatBody.scrollHeight;
-  return typing;
+.terminal h2{
+    font-size:2rem;
 }
 
-async function getAIReply(userText){
-  chatHistory.push({ role:'user', content:userText });
-  try{
-    const response = await fetch('/api/chat', {
-      method:'POST',
-      headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({
-        system: SYSTEM_PROMPT,
-        messages: chatHistory
-      })
-    });
-    const data = await response.json();
-    const reply = data.reply || "Maaf kijiye, thora issue aa gaya — dubara try karein?";
-    chatHistory.push({ role:'assistant', content: reply });
-    return reply;
-  }catch(err){
-    return "Connection mein masla aa raha hai abhi — please try again ya direct email karein: intellivoraai@gmail.com";
-  }
+
+/* Footer */
+footer{
+    padding:50px 0 25px;
 }
 
-async function sendMessage(){
-  const val = chatInput.value.trim();
-  if(!val) return;
-  addBubble(val, 'user');
-  chatInput.value = '';
-  const typing = showTyping();
-  const reply = await getAIReply(val);
-  typing.remove();
-  addBubble(reply, 'bot');
+
+.foot-grid{
+    grid-template-columns:1fr;
+    gap:30px;
 }
-chatSend.addEventListener('click', sendMessage);
-chatInput.addEventListener('keypress', e=>{ if(e.key==='Enter') sendMessage(); });
 
-/* ---------------- SIMULATED LIVE METRICS ---------------- */
-setInterval(()=>{
-  const el = document.getElementById('botCount');
-  let n = parseInt(el.textContent.replace(/\D/g,''));
-  n += Math.floor(Math.random()*3);
-  el.textContent = n.toLocaleString() + '+';
-}, 4000);
 
-setInterval(()=>{
-  document.getElementById('pingVal').textContent = (10 + Math.floor(Math.random()*8)) + 'ms';
-}, 3000);
-</script>
-</body>
-</html>
+.foot-bottom{
+    flex-direction:column;
+    text-align:center;
+}
+
+
+/* Reduce 3D load */
+#hero-canvas{
+    opacity:.45;
+}
+
+}
+
+
+/* Small phones */
+@media(max-width:400px){
+
+h1.hero-title{
+    font-size:2rem;
+}
+
+.logo{
+    font-size:13px;
+}
+
+.btn{
+    font-size:12px;
+}
+
+}
