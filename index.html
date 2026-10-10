@@ -1258,10 +1258,6 @@ if(revealEls.length){
 }
 
 const teamIntroData = {
-  consultant: {
-    title: 'Prof. Dr. Imran Babar — Consultant',
-    text: 'Prof. Dr. Imran Babar is a highly accomplished academic and technology expert, serving as a Consultant at Intellivora. He earned his Ph.D. in Computer Science from Malaysia, where he specialized in advanced computing technologies and research. With extensive expertise in Artificial Intelligence, machine learning, and modern computer science, Dr. Babar has contributed to research, innovation, and the practical application of intelligent systems across various domains. As a Consultant at Intellivora, he provides strategic guidance on AI-driven solutions, emerging technologies, and digital transformation initiatives.'
-  },
   ceo: {
     title: 'Noor Fatima — CEO',
     text: 'Noor Fatima is the Chief Executive Officer of Intellivora and a passionate innovator in the field of Artificial Intelligence. She is currently pursuing a Bachelor\'s degree in Mechatronics Engineering, combining engineering principles with intelligent technologies to develop practical AI-driven solutions. With a strong foundation in AI, machine learning, and intelligent systems, Noor has designed and developed numerous AI models and solutions across different application domains. As CEO, she leads strategic direction, product innovation, and research initiatives while positioning Intellivora at the forefront of AI innovation.'
@@ -1269,7 +1265,13 @@ const teamIntroData = {
   cto: {
     title: 'Muhammad Rayan — CTO',
     text: 'Muhammad Rayan is the Chief Technology Officer of Intellivora and is currently pursuing a Bachelor of Science in Computer Engineering. He has a strong passion for Artificial Intelligence, automation, and software development, with hands-on experience in building AI-powered applications and intelligent systems. As CTO, Rayan leads the company\'s technology strategy, oversees software development, and focuses on delivering innovative AI and automation solutions that help businesses embrace digital transformation.'
+  }, 
+  consultant: {
+    title: 'Prof. Dr. Imran Babar — Consultant',
+    text: 'Prof. Dr. Imran Babar is a highly accomplished academic and technology expert, serving as a Consultant at Intellivora. He earned his Ph.D. in Computer Science from Malaysia, where he specialized in advanced computing technologies and research. With extensive expertise in Artificial Intelligence, machine learning, and modern computer science, Dr. Babar has contributed to research, innovation, and the practical application of intelligent systems across various domains. As a Consultant at Intellivora, he provides strategic guidance on AI-driven solutions, emerging technologies, and digital transformation initiatives.'
   }
+
+
 };
 
 const introButtons=document.querySelectorAll('.intro-btn');
@@ -1334,69 +1336,74 @@ function addMsg(text, who){
   chatBody.appendChild(d); chatBody.scrollTop=chatBody.scrollHeight;
 }
 const botReplies={
-  website: "This website shows Intellivora AI's public services: website chatbots, business automations, workflow integrations, aerospace/drone services, pricing packages, and contact options. I only know the public content shown here, not any private or hidden data.",
+  website: "This website shows Intvora AI's public services: website chatbots, business automations, workflow integrations, aerospace/drone services, pricing packages, and contact options. I only know the public content shown here, not any private or hidden data.",
   services: "Intellivora AI offers website chat systems, WhatsApp assistants, appointment booking, support/FAQ workflows, lead capture, CRM automation, invoicing automation, and aerospace/drone mission support. Ask me about any of these services.",
   pricing: "Our packages are:\n• Starter Automation — $499/mo: website chatbot, basic email/CRM automation, WhatsApp integration.\n• Pro Business Automation — $1,499/mo: omni-channel bots, complex workflows, AI receptionist, auto invoicing.\n• Enterprise & Aerospace Custom — Custom quote: custom AI agents, digital twins, drone systems, and mission-grade integrations.",
-  contact: "You can book a consultation through the contact section or email intellivoraai@gmail.com. I can also help you choose a package or request a workflow review.",
+  contact: "You can book a consultation through the contact section or email intvoraai@gmail.com. I can also help you choose a package or request a workflow review.",
   drones: "Our aerospace division includes drone navigation, coordinated UAV systems, satellite image analysis, predictive maintenance, and aerospace digital twins. This is built for commercial and mission-critical operations.",
   privateAccess: "I do not have access to private accounts or confidential backend data. I only know what is visible on this website and can answer questions about those public services.",
-  greeting: "Hello 👋 I’m IntelliVora AI Assistant. I can explain this website, our services, pricing, and contact options. What would you like to know?",
+  greeting: "Hello 👋 I’m IntVora AI Assistant. I can explain this website, our services, pricing, and contact options. What would you like to know?",
   fallback: "I can help with this website's services, pricing, chat systems, drone/aerospace offerings, or contact options. Please ask about pricing, services, or how to book a demo."
 };
 
-async function botRespond(userText) {
-  const text = String(userText || "").trim();
+
+function botRespond(userText) {
+  const text = String(userText || "").trim().toLowerCase();
   if (!text) return;
 
-  const loading = document.createElement("div");
-  loading.className = "msg bot";
-  loading.textContent = "INTVORAAI is thinking...";
+  let reply;
 
-  const chatBody = document.querySelector("#chatBody");
-  if (!chatBody) {
-    console.error("Chat body element not found.");
-    return;
+  if (
+    text.includes("hello") ||
+    text.includes("hi") ||
+    text.includes("hey") ||
+    text.includes("salam")
+  ) {
+    reply = "Hello! Welcome to INTVORAAI. How can we help you today?";
+  } else if (
+    text.includes("service") ||
+    text.includes("chatbot") ||
+    text.includes("automation") ||
+    text.includes("whatsapp")
+  ) {
+    reply = "We offer AI chatbots, WhatsApp integrations, business automation, website solutions, lead capture, and workflow automation.";
+  } else if (
+    text.includes("drone") ||
+    text.includes("aerospace")
+  ) {
+    reply = "We explore AI-powered drone and aerospace solutions. Tell us about your project requirements.";
+  } else if (
+    text.includes("price") ||
+    text.includes("pricing") ||
+    text.includes("cost")
+  ) {
+    reply = "Our pricing depends on your requirements. Please contact our team for a quote.";
+  } else if (
+    text.includes("contact") ||
+    text.includes("demo") ||
+    text.includes("team")
+  ) {
+    reply = "Please visit the contact section on our website to connect with our team.";
+  } else if (
+    text.includes("who are you") ||
+    text.includes("about") ||
+    text.includes("intvora") ||
+    text.includes("intvora")
+  ) {
+    reply = "We are INTVORAAI — Intelligent Virtual Operations and Revolutionary Automation, providing AI solutions for businesses.";
+  } else if (
+    text.includes("thank")
+  ) {
+    reply = "You're welcome! Let us know if you need anything else.";
+  } else {
+    reply = "Thanks for your message! I can help with our services, automation, drone solutions, pricing, and contact information.";
   }
 
-  chatBody.appendChild(loading);
-  chatBody.scrollTop = chatBody.scrollHeight;
-
-  try {
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: text,
-        history: window.intvoraHistory || []
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || "AI request failed");
-    }
-
-    const reply = data.reply || "Sorry, I couldn't generate a response.";
-    loading.textContent = reply;
-
-    window.intvoraHistory = window.intvoraHistory || [];
-    window.intvoraHistory.push(
-      { role: "user", content: text },
-      { role: "assistant", content: reply }
-    );
-
-    if (window.intvoraHistory.length > 20) {
-      window.intvoraHistory.splice(0, 2);
-    }
-  } catch (error) {
-    console.error("INTVORAAI chat error:", error);
-    loading.textContent =
-      "I'm having trouble connecting right now. Please try again.";
-  }
-
-  chatBody.scrollTop = chatBody.scrollHeight;
+  setTimeout(function () {
+    addMsg(reply, "bot");
+  }, 400);
 }
+
 function sendMessage(text){ if(!text.trim()) return; addMsg(text,'user'); botRespond(text); }
 window.sendMessage = sendMessage;
 chatSend.addEventListener('click',()=>{sendMessage(chatInput.value); chatInput.value='';});
