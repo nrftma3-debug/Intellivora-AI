@@ -118,11 +118,12 @@ Instructions:
     const data = await response.json();
 
     if (!response.ok) {
+    
       console.error(
         "Anthropic error:",
         response.status,
-        data?.error?.type || "Unknown error"
-      );
+        JSON.stringify(data?.error || data)
+);
 
       return res.status(502).json({
         error: "The AI could not respond. Please try again."
