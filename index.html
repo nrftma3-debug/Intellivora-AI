@@ -1343,30 +1343,59 @@ const botReplies={
   greeting: "Hello 👋 I’m IntelliVora AI Assistant. I can explain this website, our services, pricing, and contact options. What would you like to know?",
   fallback: "I can help with this website's services, pricing, chat systems, drone/aerospace offerings, or contact options. Please ask about pricing, services, or how to book a demo."
 };
-function botRespond(userText){
-  const key=userText.trim().toLowerCase();
-  if(!key) return;
-  let reply='';
-  if(key.includes('website')||key.includes('site')||key.includes('what is this')||key.includes('who are you')||key.includes('web kia')||key.includes('what is intellivora')||key.includes('about us')){
-    reply=botReplies.website;
-  } else if(key.includes('service')||key.includes('services')||key.includes('what do you do')||key.includes('tell me about')||key.includes('service kya')){
-    reply=botReplies.services;
-  } else if(key.includes('price')||key.includes('cost')||key.includes('package')||key.includes('tier')||key.includes('pricing')){
-    reply=botReplies.pricing;
-  } else if(key.includes('contact')||key.includes('book')||key.includes('demo')||key.includes('audit')||key.includes('consult')){
-    reply=botReplies.contact;
-  } else if(key.includes('drone')||key.includes('aerospace')||key.includes('uav')||key.includes('flight')||key.includes('satellite')||key.includes('maintenance')){
-    reply=botReplies.drones;
-  } else if(key.includes('private')||key.includes('account')||key.includes('data')||key.includes('personal')||key.includes('hidden')||key.includes('secret')){
-    reply=botReplies.privateAccess;
-  } else if(key.includes('hello')||key.includes('hi')||key.includes('hey')||key.includes('assalam')||key.includes('salam')||key.includes('good morning')||key.includes('good evening')||key.includes('good night')){
-    reply=botReplies.greeting;
-  } else if(key.includes('automation')||key.includes('workflow')||key.includes('crm')||key.includes('invoice')||key.includes('whatsapp')||key.includes('lead')){
-    reply=botReplies.services;
-  } else {
-    reply=botReplies.fallback;
+
+async function botRespond(userText) {
+  const text = String(userText || "").trim();
+  if (!text) return;
+
+  const loading = document.createElement("div");
+  loading.className = "msg bot";
+  loading.textContent = "INTVORAAI is thinking...";
+
+  const chatBody = document.querySelector("#chatBody");
+  if (!chatBody) {
+    console.error("Chat body element not found.");
+    return;
   }
-  setTimeout(()=>addMsg(reply,'bot'), 500);
+
+  chatBody.appendChild(loading);
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: text,
+        history: window.intvoraHistory || []
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI request failed");
+    }
+
+    const reply = data.reply || "Sorry, I couldn't generate a response.";
+    loading.textContent = reply;
+
+    window.intvoraHistory = window.intvoraHistory || [];
+    window.intvoraHistory.push(
+      { role: "user", content: text },
+      { role: "assistant", content: reply }
+    );
+
+    if (window.intvoraHistory.length > 20) {
+      window.intvoraHistory.splice(0, 2);
+    }
+  } catch (error) {
+    console.error("INTVORAAI chat error:", error);
+    loading.textContent =
+      "I'm having trouble connecting right now. Please try again.";
+  }
+
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 function sendMessage(text){ if(!text.trim()) return; addMsg(text,'user'); botRespond(text); }
 window.sendMessage = sendMessage;
