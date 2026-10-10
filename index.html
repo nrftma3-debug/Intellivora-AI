@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" type="image/png" href="/Logo.png">
 <link rel="apple-touch-icon" href="/Logo.png">
 <title>IntvoraAI | AI Automation Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script type="application/ld+json">
@@ -20,22 +21,22 @@
 </script>
 <style>
   :root{
-    --background:#020617;
-    --background-secondary:#07111F;
-    --surface:#0F172A;
-    --card:#111827;
-    --glass:rgba(17,24,39,.65);
+    --background:#030305;
+    --background-secondary:#0A0A12;
+    --surface:#0A0A12;
+    --card:rgba(255,255,255,.03);
+    --glass:rgba(255,255,255,.03);
 
-    --primary:#00E5FF;
-    --primary-light:#67E8F9;
-    --secondary:#2563EB;
-    --accent:#7C3AED;
+    --primary:#00F2FE;
+    --primary-light:#7DF9FF;
+    --secondary:#4FACFE;
+    --accent:#4FACFE;
 
     --heading:#FFFFFF;
     --text:#E2E8F0;
     --muted:#94A3B8;
 
-    --border:#334155;
+    --border:rgba(255,255,255,.10);
     --border-light:rgba(255,255,255,.08);
 
     --success:#10B981;
@@ -46,8 +47,8 @@
     --glow-blue:0 0 15px rgba(37,99,235,.30),0 0 40px rgba(37,99,235,.20);
     --glow-purple:0 0 15px rgba(124,58,237,.30),0 0 40px rgba(124,58,237,.20);
     --shadow:0 20px 50px rgba(0,0,0,.45);
-    --gradient-main:linear-gradient(135deg,#020617 0%,#07111F 40%,#0F172A 100%);
-    --gradient-primary:linear-gradient(90deg,#00E5FF,#2563EB);
+    --gradient-main:radial-gradient(ellipse at 50% -20%,#0A0A12,#030305 70%);
+    --gradient-primary:linear-gradient(90deg,#00F2FE,#4FACFE);
     --gradient-card:linear-gradient(145deg,rgba(17,24,39,.95),rgba(15,23,42,.75));
     --gradient-button:linear-gradient(90deg,#00E5FF,#2563EB,#7C3AED);
 
@@ -465,7 +466,7 @@
   .foot-map{border-radius:10px; overflow:hidden; height:100px; border:1px solid var(--border); background:
     linear-gradient(rgba(0,240,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,0.06) 1px,transparent 1px), rgba(255,255,255,0.02);
     background-size:16px 16px; position:relative; margin-top:10px;}
-  .foot-map::after{content:'📍 Remote-first · Global Ops'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11px; color:var(--text-dim);}
+  .foot-map::after{content:'📍 Islamabad, Pakistan'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11px; color:var(--text-dim);}
 
   /* ===== COMPARISON TABLE / ROI CALC ===== */
   .compare-wrap{overflow-x:auto; max-width:900px; margin:34px auto 0;}
@@ -604,13 +605,379 @@
   html[data-theme="light"] .foot-map{background-color:rgba(0,0,0,0.02);}
   html[data-theme="light"] .digital-rain{color:rgba(37,99,235,0.35);}
   #themeToggle{width:44px; height:44px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:var(--cyan); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; margin-right:4px;}
+
+  /* =====================================================================
+     FULL ULTRA — OBSIDIAN & LIQUID CHROME  (presentation layer only)
+     ===================================================================== */
+  :root{
+    --void:#030305; --obsidian:#0A0A12;
+    --cyan:#00F2FE; --violet:#4FACFE; --crimson:#4FACFE;
+    --chrome-edge:rgba(255,255,255,.15);
+    --glass-bg:rgba(255,255,255,.03);
+    --glow-bloom:0 0 30px rgba(0,242,254,.3);
+    --ease-ultra:cubic-bezier(.22,1,.36,1);
+  }
+  html:not([data-theme="light"]){ color-scheme:dark; }
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+  h1,h2,h3,h4{font-family:'Inter',-apple-system,'SF Pro Display',sans-serif; letter-spacing:-0.025em; font-weight:700;}
+  .mono,.eyebrow,.chip,.loader-status{letter-spacing:0.02em;}
+  ::selection{background:rgba(0,242,254,.25); color:#fff;}
+
+  /* ---- Bottomless canvas ---- */
+  html:not([data-theme="light"]) body{background:#030305;}
+  html:not([data-theme="light"]) #bg-canvas{
+    background:
+      radial-gradient(1100px 700px at 15% -10%, rgba(79,172,254,.14), transparent 60%),
+      radial-gradient(900px 600px at 90% 5%, rgba(0,242,254,.09), transparent 55%),
+      radial-gradient(1200px 800px at 50% 120%, rgba(10,10,18,1), transparent 70%),
+      radial-gradient(ellipse at 50% 40%, #0A0A12 0%, #030305 75%), #030305;
+  }
+  html:not([data-theme="light"]) .grid-overlay{opacity:.35;}
+  html:not([data-theme="light"]) .scanline{opacity:.15;}
+
+  /* ---- Liquid-chrome headings ---- */
+  html:not([data-theme="light"]) .hero h1,
+  html:not([data-theme="light"]) .section-head h2,
+  html:not([data-theme="light"]) .loader-logo{
+    background:linear-gradient(110deg,#ffffff 0%,#cbd5e1 38%,#64748b 62%,#e2e8f0 82%,#ffffff 100%);
+    background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; letter-spacing:-0.035em; animation:chromeShimmer 9s linear infinite;
+  }
+  .hero h1{font-weight:800; line-height:1.04;}
+  @keyframes chromeShimmer{0%{background-position:0% 50%;}100%{background-position:220% 50%;}}
+  html:not([data-theme="light"]) .hero p.sub{color:#9aa3b5; text-shadow:none;}
+  html:not([data-theme="light"]) .section-tag,
+  html:not([data-theme="light"]) .eyebrow{
+    color:#7df9ff; border:1px solid rgba(0,242,254,.25); background:rgba(0,242,254,.05);
+    box-shadow:inset 0 0 12px rgba(0,242,254,.06);
+  }
+
+  /* ---- Frosted glass surfaces + gradient chrome edge ---- */
+  html:not([data-theme="light"]) .glass,
+  html:not([data-theme="light"]) .service-card,
+  html:not([data-theme="light"]) .why-card,
+  html:not([data-theme="light"]) .team-card,
+  html:not([data-theme="light"]) .blog-card,
+  html:not([data-theme="light"]) .career-card,
+  html:not([data-theme="light"]) .price-card,
+  html:not([data-theme="light"]) .testi-card,
+  html:not([data-theme="light"]) .case-card,
+  html:not([data-theme="light"]) .roi-calc,
+  html:not([data-theme="light"]) .intro-card,
+  html:not([data-theme="light"]) .faq-item{
+    position:relative; isolation:isolate;
+    background:rgba(255,255,255,.03) !important;
+    -webkit-backdrop-filter:blur(40px) saturate(140%); backdrop-filter:blur(40px) saturate(140%);
+    border:1px solid transparent !important; border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
+    transition:transform .5s var(--ease-ultra), box-shadow .5s var(--ease-ultra);
+  }
+  /* gradient-stroked border: translucent chrome -> invisible */
+  html:not([data-theme="light"]) .glass::before,
+  html:not([data-theme="light"]) .service-card::before,
+  html:not([data-theme="light"]) .why-card::before,
+  html:not([data-theme="light"]) .team-card::before,
+  html:not([data-theme="light"]) .blog-card::before,
+  html:not([data-theme="light"]) .career-card::before,
+  html:not([data-theme="light"]) .price-card::before,
+  html:not([data-theme="light"]) .testi-card::before,
+  html:not([data-theme="light"]) .case-card::before,
+  html:not([data-theme="light"]) .roi-calc::before,
+  html:not([data-theme="light"]) .intro-card::before,
+  html:not([data-theme="light"]) .faq-item::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none; z-index:-1;
+    background:linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.03) 45%, rgba(255,255,255,0) 70%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+  }
+  /* mouse-tracking spotlight (vars set by JS below) */
+  html:not([data-theme="light"]) .glass::after,
+  html:not([data-theme="light"]) .service-card::after,
+  html:not([data-theme="light"]) .why-card::after,
+  html:not([data-theme="light"]) .team-card::after,
+  html:not([data-theme="light"]) .blog-card::after,
+  html:not([data-theme="light"]) .career-card::after,
+  html:not([data-theme="light"]) .price-card::after,
+  html:not([data-theme="light"]) .testi-card::after,
+  html:not([data-theme="light"]) .case-card::after,
+  html:not([data-theme="light"]) .roi-calc::after,
+  html:not([data-theme="light"]) .intro-card::after{
+    content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:-1; opacity:0; transition:opacity .4s ease;
+    background:
+      radial-gradient(420px circle at var(--sx,50%) var(--sy,50%), rgba(0,242,254,.10), transparent 45%),
+      radial-gradient(260px circle at var(--sx,50%) var(--sy,50%), rgba(255,255,255,.05), transparent 60%);
+  }
+  html:not([data-theme="light"]) .spot:hover::after{opacity:1;}
+  html:not([data-theme="light"]) .spot:hover::before{
+    background:radial-gradient(240px circle at var(--sx,50%) var(--sy,50%), rgba(0,242,254,.75), rgba(79,172,254,.25) 40%, rgba(255,255,255,.06) 75%);
+  }
+  html:not([data-theme="light"]) .service-card:hover,
+  html:not([data-theme="light"]) .price-card:hover,
+  html:not([data-theme="light"]) .why-card:hover,
+  html:not([data-theme="light"]) .case-card:hover,
+  html:not([data-theme="light"]) .blog-card:hover{ transform:translateY(-4px); box-shadow:0 30px 70px rgba(0,0,0,.6), 0 0 40px rgba(0,242,254,.08), inset 0 1px 0 rgba(255,255,255,.08);}
+  .team-card.intro-card-button.active{box-shadow:0 0 40px rgba(0,242,254,.18), 0 20px 50px rgba(0,0,0,.5) !important;}
+  html:not([data-theme="light"]) .team-card.intro-card-button.active::before{background:linear-gradient(145deg,rgba(0,242,254,.7),rgba(79,172,254,.25) 50%,rgba(255,255,255,0) 80%);}
+  html:not([data-theme="light"]) .team-avatar{background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.15); color:#e2e8f0; box-shadow:0 0 24px rgba(0,242,254,.15);}
+
+  /* ---- Header ---- */
+  html:not([data-theme="light"]) header{background:rgba(3,3,5,.55); -webkit-backdrop-filter:blur(30px) saturate(150%); backdrop-filter:blur(30px) saturate(150%);}
+  html:not([data-theme="light"]) header.scrolled{background:rgba(3,3,5,.8); border-bottom:1px solid rgba(255,255,255,.08);}
+  html:not([data-theme="light"]) .mobile-menu{background:rgba(6,6,10,.92); -webkit-backdrop-filter:blur(40px); backdrop-filter:blur(40px);}
+  nav.desktop-nav a:hover{color:#fff; text-shadow:0 0 14px rgba(0,242,254,.6);}
+  .logo .dot{background:#00F2FE; box-shadow:0 0 10px #00F2FE,0 0 22px rgba(0,242,254,.6);}
+
+  /* ---- High-gloss obsidian CTAs ---- */
+  .btn-primary{
+    color:#eafcff !important; border:1px solid rgba(0,242,254,.55) !important;
+    background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 38%,rgba(0,0,0,.35) 100%), #07070d !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 18px rgba(0,242,254,.14), 0 8px 24px rgba(0,0,0,.5) !important;
+    text-shadow:0 0 12px rgba(0,242,254,.45);
+    transition:transform .3s var(--ease-ultra), box-shadow .4s var(--ease-ultra), border-color .3s;
+  }
+  .btn-primary:hover{ box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 0 22px rgba(0,242,254,.25), 0 0 30px rgba(0,242,254,.3) !important; border-color:#00F2FE !important; transform:translateY(-1px);}
+  .btn::after{background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.22) 50%,transparent 75%);}
+  .btn-glass,.btn-alert{
+    color:#e5e7eb; background:rgba(255,255,255,.03) !important; border:1px solid rgba(255,255,255,.14) !important;
+    -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .btn-glass:hover,.btn-alert:hover{border-color:rgba(0,242,254,.6) !important; color:#fff; box-shadow:0 0 30px rgba(0,242,254,.3);}
+  .intro-btn.active,.intro-btn:hover{border-color:rgba(0,242,254,.7) !important; background:rgba(0,242,254,.08) !important; color:#fff; box-shadow:0 0 26px rgba(0,242,254,.22);}
+
+  /* ---- Inputs ---- */
+  html:not([data-theme="light"]) .term-field input,
+  html:not([data-theme="light"]) .term-field textarea,
+  html:not([data-theme="light"]) .newsletter-row input,
+  html:not([data-theme="light"]) .chat-input-row input{
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.12); border-radius:12px; color:#f1f5f9;
+    transition:border-color .3s, box-shadow .3s;
+  }
+  .term-field input:focus,.term-field textarea:focus,.chat-input-row input:focus,.newsletter-row input:focus{
+    outline:none; border-color:rgba(0,242,254,.6); box-shadow:0 0 0 3px rgba(0,242,254,.12), 0 0 24px rgba(0,242,254,.15);
+  }
+  html:not([data-theme="light"]) footer{border-top:1px solid rgba(255,255,255,.08);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(#475569,#1e293b);}
+
+  /* ---- Modal ---- */
+  html:not([data-theme="light"]) .modal-card{background:rgba(8,8,14,.88); -webkit-backdrop-filter:blur(40px); backdrop-filter:blur(40px); border:1px solid rgba(255,255,255,.14); box-shadow:0 40px 100px rgba(0,0,0,.7), 0 0 60px rgba(0,242,254,.08);}
+  html:not([data-theme="light"]) .modal-backdrop{background:rgba(3,3,5,.7);}
+
+  /* ---- Chat widget (glass + chrome) ---- */
+  #chat-toggle{
+    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02) 45%,rgba(0,0,0,.4)), #07070d;
+    border:1px solid rgba(0,242,254,.55); box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 0 30px rgba(0,242,254,.3), 0 10px 30px rgba(0,0,0,.6);
+    transition:transform .35s var(--ease-ultra), box-shadow .35s;
+  }
+  #chat-toggle:hover{transform:scale(1.07); box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 0 44px rgba(0,242,254,.5), 0 10px 30px rgba(0,0,0,.6);}
+  #chat-window{
+    background:rgba(8,8,14,.78) !important; -webkit-backdrop-filter:blur(40px) saturate(150%); backdrop-filter:blur(40px) saturate(150%);
+    border:1px solid rgba(255,255,255,.14); border-radius:22px; box-shadow:0 30px 90px rgba(0,0,0,.7), 0 0 60px rgba(0,242,254,.07), inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  #chat-window.open{animation:chatIn .45s var(--ease-ultra) both;}
+  @keyframes chatIn{from{opacity:0; transform:translateY(14px) scale(.97);} to{opacity:1; transform:none;}}
+  .chat-head{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent); border-bottom:1px solid rgba(255,255,255,.08);}
+  .chat-head .title{color:#f1f5f9; letter-spacing:-0.01em;}
+  .chat-head .status{color:#34f5c5;}
+  .chat-body{scroll-behavior:smooth; overscroll-behavior:contain;}
+  .msg{word-wrap:break-word; overflow-wrap:anywhere; line-height:1.5; white-space:pre-line;}
+  .msg.bot{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); color:#e2e8f0;}
+  .msg.user{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04)), #0b1c24; color:#eafcff; border:1px solid rgba(0,242,254,.5); box-shadow:inset 0 0 16px rgba(0,242,254,.12), 0 0 20px rgba(0,242,254,.12); font-weight:500;}
+  .chip{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.12); color:#cbd5e1; transition:all .3s var(--ease-ultra);}
+  .chip:hover{border-color:rgba(0,242,254,.6); color:#fff; box-shadow:0 0 20px rgba(0,242,254,.25);}
+  .chat-input-row{border-top:1px solid rgba(255,255,255,.08);}
+  #chatSend{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02)), #07070d; color:#00F2FE; border:1px solid rgba(0,242,254,.55); box-shadow:inset 0 0 14px rgba(0,242,254,.14);}
+  #chatSend:hover{box-shadow:0 0 26px rgba(0,242,254,.4);}
+  #micBtn{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14) !important;}
+  #micBtn.listening{background:#4FACFE; box-shadow:0 0 26px rgba(79,172,254,.6);}
+  #voiceToggle{margin-left:auto; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14); color:#cbd5e1; border-radius:10px; padding:6px 10px; font-size:11px; cursor:pointer; white-space:nowrap;}
+  #voiceToggle.active{border-color:rgba(0,242,254,.6); color:#7df9ff;}
+  #themeToggle{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.14); color:#7df9ff;}
+
+  /* ---- Cursor in chrome/cyan ---- */
+  @media(hover:hover) and (pointer:fine){
+    #cursor-dot{background:#00F2FE; box-shadow:0 0 10px #00F2FE;}
+    #cursor-ring{border-color:rgba(255,255,255,.35);}
+    #cursor-ring.magnet{background:rgba(0,242,254,.07); border-color:rgba(0,242,254,.7);}
+    /* never hide the pointer over the chat so it stays usable */
+    #chat-window, #chat-toggle{cursor:auto;} #chat-toggle,#chat-window button,#chat-window .chip{cursor:pointer;} #chat-window input{cursor:text;}
+  }
+  .loader-ring{border-color:rgba(255,255,255,.08); border-top-color:#00F2FE; border-right-color:#4FACFE;}
+  .loader-bar i{background:linear-gradient(90deg,#fff,#00F2FE,#4FACFE); box-shadow:0 0 14px #00F2FE;}
+  @media(prefers-reduced-motion:reduce){ .hero h1,.section-head h2{animation:none !important;} }
+
+  /* service-card legacy pseudo shine -> unified with spotlight system */
+  html:not([data-theme="light"]) .service-card::before{opacity:1 !important; transition:none;}
+  html:not([data-theme="light"]) .service-card::after{top:0 !important; left:0 !important; width:100% !important; transition:opacity .4s ease !important;}
+  html:not([data-theme="light"]) .service-card:hover::after{left:0 !important;}
+  html:not([data-theme="light"]) .service-card:hover{border-color:transparent !important; transform:translateY(-4px);}
+  html:not([data-theme="light"]) .service-card .icon, html:not([data-theme="light"]) .why-card .icon{background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.14); box-shadow:0 0 22px rgba(0,242,254,.12);}
+  .learn-more{color:#7df9ff;}
+
+  /* =====================================================================
+     FULL MOBILE RESPONSIVE LAYER (layout only — no logic touched)
+     ===================================================================== */
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  img,svg,video,canvas,iframe{max-width:100%;}
+  body{overflow-wrap:break-word;}
+  h1,h2,h3,h4,p,li,a,span{overflow-wrap:break-word;}
+  /* numbers/stats: font actually loaded (Orbitron was never imported) */
+  .dash-card .dval,.trust-card .num,.hero-stat strong,.price-card .amount,.process-step .pnum,.case-metric,.roi-result .big,.loader-logo{font-family:'Inter',-apple-system,'SF Pro Display',sans-serif; letter-spacing:-0.03em;}
+
+  /* Tablets & below */
+  @media (max-width:900px){
+    section{padding:48px 16px;}
+    header{padding:12px max(16px,env(safe-area-inset-right)) 12px max(16px,env(safe-area-inset-left)); padding-top:calc(12px + env(safe-area-inset-top));}
+    .module-divider{margin:48px 0 24px;}
+    .neural-wrap,.swarm-wrap{padding:32px 14px; border-radius:16px;}
+    .modal-card{max-height:88vh; max-height:88dvh; overflow-y:auto; -webkit-overflow-scrolling:touch;}
+  }
+
+  /* Phones */
+  @media (max-width:768px){
+    section{padding:40px 16px;}
+    .section-head{text-align:center;}
+    .section-head p{font-size:15px; line-height:1.65;}
+    .logo{font-size:15px; gap:8px; white-space:nowrap;}
+    #themeToggle{width:42px; height:42px; margin-right:0;}
+    .hamburger{width:44px; height:44px;}
+    .btn{white-space:normal; text-align:center; line-height:1.25; padding:12px 18px; max-width:100%;}
+    .hero{padding:32px 16px 12px;}
+    .hero h1{overflow-wrap:break-word; hyphens:none; line-height:1.08; max-width:100%;}
+    .hero-copy{padding:0;}
+    .eyebrow{font-size:10px; padding:6px 12px; max-width:100%; flex-wrap:wrap; justify-content:center;}
+    .hero-visual{padding-top:0;}
+    .earth-container{max-width:min(86vw,420px); margin:0 auto; box-shadow:0 0 60px rgba(0,242,254,.15);}
+    .hero-stats{gap:10px; margin-top:22px;}
+    .hero-stat strong{font-size:22px;}
+    .grid{gap:14px;}
+    .service-card h3{font-size:18px;} .service-card p{font-size:14.5px; line-height:1.6;}
+    .service-card,.why-card,.team-card,.blog-card,.career-card,.price-card,.testi-card,.case-card,.roi-calc{padding:18px;}
+    .price-card .amount{font-size:28px;}
+    .price-card .badge{right:16px;}
+    .dash-card{padding:14px;} .dash-card .dval{font-size:20px;}
+    .trust-card{padding:16px 10px;}
+    .case-flow{flex-wrap:wrap; gap:8px;}
+    .ba-wrap{aspect-ratio:16/10; border-radius:14px;}
+    .ba-tag{top:10px; font-size:10px; padding:3px 8px;} .ba-tag.left{left:10px;} .ba-tag.right{right:10px;}
+    .compare-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin-left:-4px; margin-right:-4px;}
+    .flow-svg-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    .intro-buttons{gap:8px;}
+    .intro-btn{flex:1 1 auto; min-width:0; padding:10px 14px; font-size:13px;}
+    .intro-card{padding:18px; margin-top:12px;} .intro-card h3{font-size:17px;} .intro-card p{font-size:13.5px; line-height:1.65;}
+    .terminal{padding:18px 16px; font-size:12.5px;} .term-line{word-break:break-word;}
+    .term-field input,.term-field textarea{font-size:16px;} /* no iOS zoom-on-focus */
+    .newsletter-row input{min-width:0; flex:1 1 100%; font-size:16px;}
+    .newsletter-row .btn,.newsletter-row button{flex:1 1 100%;}
+    footer{padding:36px 16px calc(96px + env(safe-area-inset-bottom));}
+    .foot-links{gap:12px 16px;}
+    .foot-status{gap:8px 14px; font-size:10.5px;}
+    .modal-card{padding:18px; border-radius:16px;} .modal-card h3{font-size:22px;} .modal-card li{font-size:14px;}
+    .modal-actions .btn{flex:1 1 100%;}
+    .faq-item summary{font-size:14px; gap:10px;}
+    .digital-rain,.scanline{display:none;}
+    /* lighter glass on phones = smooth scrolling */
+    html:not([data-theme="light"]) .glass,
+    html:not([data-theme="light"]) .service-card,
+    html:not([data-theme="light"]) .why-card,
+    html:not([data-theme="light"]) .team-card,
+    html:not([data-theme="light"]) .blog-card,
+    html:not([data-theme="light"]) .career-card,
+    html:not([data-theme="light"]) .price-card,
+    html:not([data-theme="light"]) .testi-card,
+    html:not([data-theme="light"]) .case-card,
+    html:not([data-theme="light"]) .roi-calc,
+    html:not([data-theme="light"]) .intro-card,
+    html:not([data-theme="light"]) .faq-item{-webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border-radius:16px;}
+    .space-cloud{opacity:.5;}
+    /* chat: stable height, keyboard-safe, thumb-reachable */
+    #chat-toggle{width:58px; height:58px; right:max(14px,env(safe-area-inset-right)); bottom:max(14px,env(safe-area-inset-bottom));}
+    #chat-window{left:max(8px,env(safe-area-inset-left)); right:max(8px,env(safe-area-inset-right)); width:auto; bottom:calc(84px + env(safe-area-inset-bottom));
+      height:min(560px, calc(100vh - 110px)); height:min(560px, calc(100dvh - 110px)); max-height:none; border-radius:20px;}
+    #chat-window .chat-body{flex:1 1 auto; min-height:0; max-height:none; -webkit-overflow-scrolling:touch;}
+    .chat-head{padding:10px 12px; flex-shrink:0;}
+    .chips{flex-shrink:0; padding:0 12px 10px; gap:6px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+    .chips::-webkit-scrollbar{display:none;}
+    .chip{white-space:nowrap; flex:0 0 auto;}
+    .chat-input-row{flex-shrink:0; flex-wrap:nowrap; padding:10px;}
+    .msg{max-width:90%; font-size:14px;}
+  }
+
+  /* Small phones (≤480) */
+  @media (max-width:480px){
+    section{padding:34px 14px;}
+    .logo{font-size:14px;}
+    .hero h1{font-size:clamp(28px,9.2vw,40px);}
+    .section-head h2{font-size:clamp(24px,7.4vw,32px);}
+    .hero-ctas{gap:10px;}
+    .earth-container{max-width:min(82vw,340px);}
+    .trust-grid,.dash-grid{gap:10px;}
+    .trust-card .num{font-size:20px;} .trust-card .lbl{font-size:10.5px; letter-spacing:.05em;}
+    .dash-card .dval{font-size:18px;} .dash-card .dlbl{font-size:10px;}
+    .process-track{gap:12px;}
+    .intro-btn{flex:1 1 100%;}
+    .toggle-wrap{flex-wrap:wrap; gap:8px;}
+    .engine-ring{width:150px; height:150px;} .engine-core{inset:52px;}
+    .engine-metrics span{padding:5px 10px; font-size:10.5px;}
+    table.compare{font-size:12px;}
+  }
+
+  /* Very small (≤360) */
+  @media (max-width:360px){
+    .hero-stats{grid-template-columns:1fr;}
+    .trust-grid,.dash-grid{grid-template-columns:1fr 1fr;}
+    #themeToggle{width:38px; height:38px;} .hamburger{width:40px; height:40px;}
+    .logo{font-size:13px;}
+  }
+
+  /* Landscape phones: keep chat usable */
+  @media (max-height:480px) and (orientation:landscape){
+    #chat-window{height:calc(100vh - 20px); height:calc(100dvh - 20px); bottom:10px; width:min(420px,60vw); left:auto;}
+    #chat-toggle{width:48px; height:48px; bottom:10px;}
+    .hero{padding-top:20px;}
+  }
+
+  /* Touch devices: no sticky hover, no hover-lift jank */
+  @media (hover:none){
+    html:not([data-theme="light"]) .service-card:hover,
+    html:not([data-theme="light"]) .price-card:hover,
+    html:not([data-theme="light"]) .why-card:hover,
+    html:not([data-theme="light"]) .case-card:hover,
+    html:not([data-theme="light"]) .blog-card:hover,
+    .team-card.intro-card-button:hover{transform:none;}
+    .btn::after{display:none;}
+    .btn:active{transform:scale(.97);}
+    .chip:active,.intro-btn:active{border-color:rgba(0,242,254,.6);}
+  }
+
+  /* ---- Drone Detection feature block ---- */
+  .dd-feature{position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:22px; padding:22px; margin:0 0 22px; align-items:center;}
+  @media(min-width:900px){ .dd-feature{grid-template-columns:1.15fr .85fr; gap:34px; padding:34px;} }
+  .dd-badge{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:#7df9ff; border:1px solid rgba(0,242,254,.3); background:rgba(0,242,254,.06); padding:6px 12px; border-radius:999px; margin-bottom:14px;}
+  .dd-dot{width:7px; height:7px; border-radius:50%; background:#00F2FE; box-shadow:0 0 10px #00F2FE; animation:pulse 1.6s infinite;}
+  .dd-copy h3{font-size:clamp(22px,4.2vw,32px); line-height:1.15; margin:0 0 12px; letter-spacing:-0.03em; color:#fff;}
+  .dd-copy p{color:var(--text-dim); font-size:15px; line-height:1.7; margin:0 0 16px;}
+  .dd-points{list-style:none; padding:0; margin:0 0 20px; display:grid; gap:10px;}
+  .dd-points li{display:flex; gap:10px; align-items:flex-start; font-size:14px; color:#cbd5e1; line-height:1.5;}
+  .dd-points li::before{content:'✓'; color:#00F2FE; font-weight:700; text-shadow:0 0 8px rgba(0,242,254,.6);}
+  .dd-visual{border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.12); box-shadow:0 0 50px rgba(0,242,254,.12), inset 0 0 0 1px rgba(255,255,255,.03);}
+  .dd-visual svg{display:block; width:100%; height:auto;}
+  .dd-scan{animation:ddScan 3.2s linear infinite;}
+  @keyframes ddScan{0%{transform:translateY(-46px);} 100%{transform:translateY(220px);}}
+  .dd-drone{animation:ddHover 3.4s ease-in-out infinite;}
+  @keyframes ddHover{0%,100%{transform:translate(160px,104px);} 50%{transform:translate(160px,98px);}}
+  .dd-box{animation:ddLock 1.8s ease-in-out infinite;}
+  @keyframes ddLock{0%,100%{opacity:1;} 50%{opacity:.55;}}
+  .dd-rec{animation:pulse 1.2s infinite;}
+  @media (max-width:768px){ .dd-feature{padding:18px; margin-bottom:16px;} .dd-copy p{font-size:14px;} .dd-actions .btn{width:100%;} }
+  @media(prefers-reduced-motion:reduce){ .dd-scan,.dd-drone,.dd-box{animation:none;} }
 </style>
 </head>
 <body>
 
 <div id="loader">
  
-<div class="loader-logo">INTVORAAI</div>
+<div class="loader-logo">INTVORA AI</div>
   <div class="loader-ring"></div>
   <div class="loader-status" id="loaderStatus">Initializing AI...</div>
   <div class="loader-bar"><i id="loaderBarFill"></i></div>
@@ -637,7 +1004,6 @@
       <a href="#chatbots">Chat Systems</a>
       <a href="#automations">Automations</a>
       <a href="#aerospace">Aerospace</a>
-      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:10px;">
@@ -655,7 +1021,6 @@
     <a href="#chatbots">Chat Systems</a>
     <a href="#automations">Automations</a>
     <a href="#aerospace">Aerospace</a>
-    <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="btn btn-primary" style="margin-top:16px; justify-content:center;">Book Free Consultation</a>
   </div>
@@ -666,7 +1031,7 @@
       <div class="hero-copy">
         <span class="eyebrow"><span class="mono">●</span> SMART OPERATIONS // BUILT FOR PEOPLE</span>
         <div class="mono full-form-pulse" style="font-size:clamp(14px, 2vw, 22px); color:var(--text-dim); letter-spacing:0.12em; margin-bottom:14px; text-transform:uppercase; line-height:1.6;">
-          INTELLIVORA = Intelligent Virtual Operations &amp; Revolutionary Automation
+          INTVORA = Intelligent Virtual Operations &amp; Revolutionary Automation
         </div>
         <h1 id="heroHeading">Architecting Autonomous Intelligence &amp; Advanced Aerospace Systems.</h1>
         <p class="sub">Custom AI chatbots, business automations, autonomous drone swarms, and aerospace digital twins — engineered as one connected system.</p>
@@ -767,7 +1132,7 @@
       </svg>
     </div>
     <div class="flow-cta reveal">
-      <button type="button" class="btn btn-primary" id="askChatCTA">Ask Intellivora</button>
+      <button type="button" class="btn btn-primary" id="askChatCTA">Ask Intvora AI</button>
     </div>
     <div class="grid cols-3 reveal-stagger" style="margin-top:30px;">
       <div class="service-card glass reveal" style="--i:0"><div class="service-copy"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M12 4v16"></path><path d="M7 7l10 10"></path><path d="M17 7L7 17"></path></svg></div><h3>Business Workflow Automation</h3><p>Multi-step logic across your entire tool stack.</p></div><button class="learn-more" data-title="Business Workflow Automation" data-items="Rule engines,CRM handoff,Approval flows,Alert routing,Reporting" data-cta="Book Demo|Contact Us">Learn More <span>→</span></button></div>
@@ -808,6 +1173,50 @@
       </div>
 
       <h3 style="text-align:center; font-size:14px; color:var(--text-dim); letter-spacing:0.1em; margin:36px 0 16px; position:relative; z-index:2;">DRONE &amp; AUTONOMOUS TECH</h3>
+      <div class="dd-feature glass reveal" id="drone-detection">
+        <div class="dd-copy">
+          <div class="dd-badge"><span class="dd-dot"></span> FEATURED · DRONE DETECTION</div>
+          <h3>AI Drone Detection System</h3>
+          <p>We apply AI to drones themselves. Our Drone Detection System is a complete, end-to-end setup where the camera detects drones on its own — the live video feed is analysed frame by frame at high frequency, so drones are spotted in real time without anyone watching a screen.</p>
+          <ul class="dd-points">
+            <li>Camera detects drones automatically — no manual monitoring</li>
+            <li>High-frequency, real-time analysis of the live feed</li>
+            <li>Everything in one system: camera, AI detection and monitoring</li>
+          </ul>
+          <div class="dd-actions">
+            <a href="#contact" class="btn btn-primary">Request Drone Detection Demo</a>
+          </div>
+        </div>
+        <div class="dd-visual" aria-hidden="true">
+          <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+              <linearGradient id="ddSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#05060b"/></linearGradient>
+              <linearGradient id="ddScan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00F2FE" stop-opacity="0"/><stop offset="1" stop-color="#00F2FE" stop-opacity=".35"/></linearGradient>
+            </defs>
+            <rect x="0" y="0" width="320" height="220" rx="14" fill="url(#ddSky)"/>
+            <g stroke="rgba(255,255,255,.06)" stroke-width="1">
+              <path d="M0 55H320M0 110H320M0 165H320M80 0V220M160 0V220M240 0V220"/>
+            </g>
+            <rect class="dd-scan" x="0" y="0" width="320" height="46" fill="url(#ddScan)"/>
+            <g class="dd-drone" transform="translate(160 104)">
+              <path d="M-26 -14L-8 -4M26 -14L8 -4M-26 14L-8 4M26 14L8 4" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+              <rect x="-10" y="-7" width="20" height="14" rx="5" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="2.6" fill="#00F2FE"/>
+              <g class="dd-rotor"><ellipse cx="-28" cy="-15" rx="11" ry="2.4" fill="rgba(226,232,240,.55)"/><ellipse cx="28" cy="-15" rx="11" ry="2.4" fill="rgba(226,232,240,.55)"/><ellipse cx="-28" cy="15" rx="11" ry="2.4" fill="rgba(226,232,240,.55)"/><ellipse cx="28" cy="15" rx="11" ry="2.4" fill="rgba(226,232,240,.55)"/></g>
+            </g>
+            <g class="dd-box" fill="none" stroke="#00F2FE" stroke-width="2" stroke-linecap="round">
+              <path d="M112 66V80M112 66H126M208 66H194M208 66V80M112 142V128M112 142H126M208 142H194M208 142V128"/>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#00F2FE">
+              <rect x="112" y="48" width="92" height="14" rx="4" fill="rgba(0,242,254,.14)" stroke="rgba(0,242,254,.5)"/>
+              <text x="118" y="58">DRONE · DETECTED</text>
+              <text x="12" y="208" fill="rgba(226,232,240,.6)">CAM-01 · LIVE</text>
+              <circle cx="300" cy="204" r="3.5" fill="#34f5c5" class="dd-rec"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
       <div class="grid cols-3 reveal-stagger">
         <div class="service-card aero-card glass reveal" style="--i:0"><span class="icon">🚁</span><h3>AI Drone Navigation</h3><p>Self-navigating UAV pathing.</p></div>
         <div class="service-card aero-card glass reveal" style="--i:1"><span class="icon">🚁</span><h3>Coordinated Drone Systems</h3><p>Multiple units working in sync for faster coverage.</p></div>
@@ -841,7 +1250,7 @@
 
   <section id="why-us">
     <div class="section-head reveal">
-      <div class="section-tag">Why Intellivora</div>
+      <div class="section-tag">Why Intvora AI</div>
       <h2>Why Choose Us</h2>
       <p>We build systems, not one-off bots — engineered to compound value over time.</p>
     </div>
@@ -963,23 +1372,23 @@
   <section id="team">
     <div class="section-head reveal">
       <div class="section-tag">Leadership</div>
-      <h2>Consultants &amp; Executives</h2>
+      <h2>Executives &amp; Consultants</h2>
     </div>
     <div class="team-intros">
       <div class="intro-buttons">
-        <button type="button" class="btn btn-glass intro-btn active" data-person="consultant">Consultant</button>
-        <button type="button" class="btn btn-glass intro-btn" data-person="ceo">CEO</button>
+        <button type="button" class="btn btn-glass intro-btn active" data-person="ceo">Founder &amp; CEO</button>
         <button type="button" class="btn btn-glass intro-btn" data-person="cto">CTO</button>
+        <button type="button" class="btn btn-glass intro-btn" data-person="consultant">Consultant</button>
       </div>
       <div class="intro-card glass" id="teamIntroCard">
-        <h3 id="teamIntroTitle">Prof. Dr. Imran Babar — Consultant</h3>
-        <p id="teamIntroText">Prof. Dr. Imran Babar is a highly accomplished academic and technology expert, serving as a Consultant at Intellivora. He earned his Ph.D. in Computer Science from Malaysia, where he specialized in advanced computing technologies and research. With extensive expertise in Artificial Intelligence, machine learning, and modern computer science, Dr. Babar has contributed to research, innovation, and the practical application of intelligent systems across various domains. As a Consultant at Intellivora, he provides strategic guidance on AI-driven solutions, emerging technologies, and digital transformation initiatives.</p>
+        <h3 id="teamIntroTitle">Noor Fatima — Founder & CEO</h3>
+        <p id="teamIntroText">Noor Fatima is the Founder and Chief Executive Officer of Intvora AI and a passionate innovator in the field of Artificial Intelligence. She is currently pursuing a Bachelor's degree in Mechatronics Engineering, combining engineering principles with intelligent technologies to develop practical AI-driven solutions. With a strong foundation in AI, machine learning, and intelligent systems, Noor has designed and developed numerous AI models and solutions across different application domains. As Founder & CEO, she leads strategic direction, product innovation, and research initiatives while positioning Intvora AI at the forefront of AI innovation.</p>
       </div>
     </div>
     <div class="grid cols-3 reveal-stagger">
-      <div class="team-card glass reveal intro-card-button active" data-person="consultant" style="--i:0"><div class="team-avatar">IB</div><h3 style="font-size:14px;">Prof. Dr. Muhammad Imran Babar</h3><p style="color:var(--text-dim); font-size:12px;">Consultant</p></div>
-      <div class="team-card glass reveal intro-card-button" data-person="ceo" style="--i:1"><div class="team-avatar">NF</div><h3 style="font-size:14px;">Noor Fatima</h3><p style="color:var(--text-dim); font-size:12px;">Chief Executive Officer</p></div>
-      <div class="team-card glass reveal intro-card-button" data-person="cto" style="--i:2"><div class="team-avatar">MR</div><h3 style="font-size:14px;">Muhammad Rayan</h3><p style="color:var(--text-dim); font-size:12px;">Chief Technology Officer</p></div>
+      <div class="team-card glass reveal intro-card-button active" data-person="ceo" style="--i:0"><div class="team-avatar">NF</div><h3 style="font-size:14px;">Noor Fatima</h3><p style="color:var(--text-dim); font-size:12px;">Founder &amp; CEO</p></div>
+      <div class="team-card glass reveal intro-card-button" data-person="cto" style="--i:1"><div class="team-avatar">MR</div><h3 style="font-size:14px;">Muhammad Rayan</h3><p style="color:var(--text-dim); font-size:12px;">Chief Technology Officer</p></div>
+      <div class="team-card glass reveal intro-card-button" data-person="consultant" style="--i:2"><div class="team-avatar">IB</div><h3 style="font-size:14px;">Dr. Imran Babar</h3><p style="color:var(--text-dim); font-size:12px;">Consultant</p></div>
     </div>
   </section>
 
@@ -995,72 +1404,6 @@
     </div>
   </section>
 
-  <section id="pricing">
-    <div class="section-head reveal">
-      <div class="section-tag">Deployment Packages</div>
-      <h2>Pricing &amp; Packages</h2>
-      <p>Transparent tiers for automation, and custom quotes for aerospace-grade engagements.</p>
-    </div>
-    <div class="toggle-wrap reveal">
-      <span id="monthlyLabel" style="color:var(--cyan);">MONTHLY</span>
-      <div class="toggle" id="billingToggle"><div class="knob"></div></div>
-      <span id="annualLabel">ANNUAL (save 15%)</span>
-    </div>
-    <div class="grid cols-3 reveal-stagger">
-      <div class="price-card glass reveal" style="--i:0">
-        <h3>Starter Automation</h3>
-        <div class="amount" id="price-starter">$499<span>/mo</span></div>
-        <ul><li>Website Chat Assistant</li><li>Simple Email/CRM Automation</li><li>WhatsApp Integration</li></ul>
-        <a href="#contact" class="btn btn-glass" style="justify-content:center;">Select Tier</a>
-      </div>
-      <div class="price-card glass featured reveal" style="--i:1">
-        <div class="badge">MOST POPULAR</div>
-        <h3>Pro Business Automation</h3>
-        <div class="amount" id="price-pro">$1,499<span>/mo</span></div>
-        <ul><li>Omni-channel Messaging</li><li>Complex Multi-step Workflows</li><li>Reception &amp; Follow-up Assistant</li><li>Auto Invoicing</li></ul>
-        <a href="#contact" class="btn btn-primary" style="justify-content:center;">Select Tier</a>
-      </div>
-      <div class="price-card glass reveal" style="--i:2; border-color:rgba(255,46,99,0.3);">
-        <h3>Enterprise &amp; Aerospace Custom</h3>
-        <div class="amount">Custom<span> Quote</span></div>
-        <ul><li>Custom Automation Systems</li><li>Aerospace Digital Twins</li><li>Drone Systems &amp; Flight Analytics</li><li>Full Business Integration</li></ul>
-        <a href="#contact" class="btn btn-alert" style="justify-content:center;">Request Quote</a>
-      </div>
-    </div>
-
-    <div class="compare-wrap reveal">
-      <table class="compare">
-        <thead><tr><th>Feature</th><th>Starter</th><th>Pro</th><th>Enterprise</th></tr></thead>
-        <tbody>
-          <tr><td>Website AI Chatbot</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>WhatsApp / IG / FB Bots</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Multi-step Workflows</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Auto Invoicing</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><td>Custom AI Agents</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Aerospace / Drone Systems</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><td>Dedicated Support</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="roi-calc glass reveal">
-      <div class="section-tag" style="text-align:center; margin-bottom:14px;">Savings Calculator</div>
-      <div class="roi-row">
-        <label>Monthly customer conversations <span id="roiConvVal">500</span></label>
-        <input type="range" id="roiConv" min="100" max="5000" step="100" value="500">
-      </div>
-      <div class="roi-row">
-        <label>Avg. hourly staff cost ($) <span id="roiWageVal">15</span></label>
-        <input type="range" id="roiWage" min="5" max="60" step="1" value="15">
-      </div>
-      <div class="roi-result">
-        <div style="font-size:12px; color:var(--text-dim);">Estimated Monthly Savings</div>
-        <div class="big" id="roiSavings">$0</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Based on ~4 min saved per conversation vs manual handling</div>
-      </div>
-    </div>
-  </section>
-
   <section id="faq">
     <div class="section-head reveal">
       <div class="section-tag">Common Questions</div>
@@ -1069,9 +1412,9 @@
     <div class="glass reveal" style="max-width:760px; margin:0 auto; padding:8px 20px;">
       <details class="faq-item" open><summary>How fast can you deploy a chatbot?</summary><p>Most website and WhatsApp bots go live within 5–10 business days depending on scope.</p></details>
       <details class="faq-item"><summary>Do you work with existing CRMs?</summary><p>Yes — we integrate with most major CRMs and can build custom sync logic where needed.</p></details>
-      <details class="faq-item"><summary>Can you handle aerospace-grade projects?</summary><p>Our aerospace division builds mission planning software, digital twins, and drone/flight systems.</p></details>
+      <details class="faq-item"><summary>Can you handle aerospace-grade projects?</summary><p>Our aerospace division builds mission planning software, digital twins, AI drone detection systems, and drone/flight systems.</p></details>
       <details class="faq-item"><summary>What's included in the free workflow review?</summary><p>A live walkthrough of your current process, practical automation ideas, and a rough estimate of time and cost savings.</p></details>
-      <details class="faq-item"><summary>Is support included?</summary><p>Pro and Enterprise tiers include ongoing support; Starter includes 30 days post-launch support.</p></details>
+      <details class="faq-item"><summary>Is support included?</summary><p>Yes — every project includes post-launch support. Contact us and we will agree the support that fits your project.</p></details>
     </div>
   </section>
 
@@ -1085,7 +1428,7 @@
       <a href="#contact" class="service-card glass reveal" style="--i:0; text-align:center;"><div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 11h18"></path></svg></div><h3>Schedule Meeting</h3><p>Pick a slot instantly</p></a>
       <a href="#" class="service-card glass reveal" style="--i:1; text-align:center;"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"></path><path d="M8 11h8"></path><path d="M8 14h5"></path></svg></div><h3>WhatsApp</h3><p>Message the team</p></a>
       <button type="button" id="openLiveChatBtn" class="service-card glass reveal" style="--i:2; text-align:center; cursor:pointer; border:1px solid var(--border); font-family:inherit; color:inherit;"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v5A2.5 2.5 0 0 1 17.5 14H11l-4 4v-4H6.5A2.5 2.5 0 0 1 4 11.5z"></path></svg></div><h3>Live Chat</h3><p>Talk to our AI now</p></button>
-      <a href="mailto:intellivoraai@gmail.com" class="service-card glass reveal" style="--i:3; text-align:center;"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></div><h3>Email</h3><p>Send your brief</p></a>
+      <a href="mailto:intvoraai@gmail.com" class="service-card glass reveal" style="--i:3; text-align:center;"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></div><h3>Email</h3><p>Send your brief</p></a>
     </div>
 
     <div class="terminal glass reveal" style="max-width:640px; margin:0 auto;">
@@ -1094,13 +1437,13 @@
         <span class="term-dot" style="background:#FFD23C;"></span>
         <span class="term-dot" style="background:#3CFF9E;"></span>
       </div>
-      <div class="term-line">&gt; connecting to <b>intellivora://uplink</b>...</div>
+      <div class="term-line">&gt; connecting to <b>intvora://uplink</b>...</div>
       <div class="term-line">&gt; handshake <b>OK</b>. awaiting mission parameters_</div>
-      <div class="term-line">&gt; EMAIL_CHANNEL: <b><a href="mailto:intellivoraai@gmail.com" style="color:var(--cyan);">intellivoraai@gmail.com</a></b>
+      <div class="term-line">&gt; EMAIL_CHANNEL: <b><a href="mailto:intvoraai@gmail.com" style="color:var(--cyan);">intvoraai@gmail.com</a></b>
         <button type="button" id="copyEmailBtn" class="mono" style="margin-left:8px; font-size:10px; padding:4px 9px; border-radius:6px; border:1px solid var(--border); background:rgba(0,240,255,0.06); color:var(--cyan); cursor:pointer; min-height:28px;">COPY</button>
       </div>
       <div class="term-line">&gt; INSTAGRAM_CHANNEL:
-        <a href="https://instagram.com/intellivora.ai" target="_blank" rel="noopener" class="mono" style="margin-left:6px; display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:999px; border:1px solid rgba(139,92,246,0.4); background:linear-gradient(135deg, rgba(139,92,246,0.15), rgba(0,240,255,0.1)); color:var(--violet); font-size:11px; box-shadow:0 0 10px rgba(139,92,246,0.25);">📸 @intellivora.ai</a>
+        <a href="https://instagram.com/intvora.ai" target="_blank" rel="noopener" class="mono" style="margin-left:6px; display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:999px; border:1px solid rgba(139,92,246,0.4); background:linear-gradient(135deg, rgba(139,92,246,0.15), rgba(0,240,255,0.1)); color:var(--violet); font-size:11px; box-shadow:0 0 10px rgba(139,92,246,0.25);">📸 @intvora.ai</a>
       </div>
       <div class="term-line">&gt; LINKEDIN_CHANNEL: <b><a href="#" style="color:var(--text-dim);">[ LinkedIn: Coming Soon / Insert URL Here ]</a></b></div>
       <form class="term-form" onsubmit="event.preventDefault(); document.getElementById('formAck').style.display='block';">
@@ -1117,14 +1460,14 @@
   <footer>
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="logo"><span class="dot"></span> INTELLIVORA <span style="color:var(--cyan);">AI</span></div>
+        <div class="logo"><span class="dot"></span> INTVORA <span style="color:var(--cyan);">AI</span></div>
         <p>Practical automation, smarter workflows, and trusted operational support — built to feel clear and easy to work with.</p>
         <div class="newsletter-row">
           <input type="email" placeholder="you@company.com" id="newsletterEmail">
           <button type="button" class="btn btn-primary" id="newsletterBtn">Subscribe</button>
         </div>
         <div class="social-row">
-          <a href="https://instagram.com/intellivora.ai" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a href="https://instagram.com/intvora.ai" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
           <a href="#" aria-label="LinkedIn">💼</a>
           <a href="#" aria-label="X / Twitter">🐦</a>
           <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp">📱</a>
@@ -1142,7 +1485,7 @@
         <a href="#" style="color:var(--text-dim);">Privacy Policy</a>
         <a href="#" style="color:var(--text-dim);">Terms of Service</a>
         <a href="#" style="color:var(--text-dim);">Cookie Policy</a>
-        <div style="font-size:13px; color:var(--text-dim); margin-top:6px;">🏢 Remote-first · Global Operations</div>
+        <div style="font-size:13px; color:var(--text-dim); margin-top:6px;">🏢 Islamabad, Pakistan</div>
         <div class="foot-map"></div>
       </div>
     </div>
@@ -1151,12 +1494,11 @@
       <a href="#chatbots">Chat Systems</a>
       <a href="#automations">Automations</a>
       <a href="#aerospace">Aerospace</a>
-      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="foot-links" style="margin-top:-8px;">
-      <a href="mailto:intellivoraai@gmail.com">✉ intellivoraai@gmail.com</a>
-      <a href="https://instagram.com/intellivora.ai" target="_blank" rel="noopener">📸 @intellivora.ai</a>
+      <a href="mailto:intvoraai@gmail.com">✉ intvoraai@gmail.com</a>
+      <a href="https://instagram.com/intvora.ai" target="_blank" rel="noopener">📸 @intvora.ai</a>
       <a href="#" style="color:#4d5975;">💼 LinkedIn — coming soon</a>
     </div>
     <div class="foot-status">
@@ -1166,7 +1508,7 @@
       <a href="#" style="color:var(--text-dim);">Privacy Policy</a>
       <a href="#" style="color:var(--text-dim);">Terms of Service</a>
     </div>
-    <div class="copyright">© 2026 Intellivora AI. All autonomous rights reserved.</div>
+    <div class="copyright">© 2026 Intvora AI. All autonomous rights reserved.</div>
   </footer>
 
 </div>
@@ -1209,23 +1551,23 @@
       </svg>
     </div>
     <div>
-      <div class="title">Intellivora Sales AI</div>
-      <div class="status">● Online — English only</div>
+      <div class="title">Intvora AI Sales Assistant</div>
+      <div class="status">● Online</div>
     </div>
     <button type="button" id="voiceToggle">🔊 Voice</button>
   </div>
   <div class="chat-body" id="chatBody">
-    <div class="msg bot">Hello 👋 I'm IntelliVora AI Assistant. How can I help you today?
+    <div class="msg bot">Hello 👋 I'm Intvora AI Assistant. How can I help you today?
 
 ○ Smart Automation
 ○ Drone Services
-○ Pricing
+○ Drone Detection
 ○ Contact</div>
   </div>
   <div class="chips" id="chatChips">
     <div class="chip" data-msg="Smart Automation">Smart Automation</div>
     <div class="chip" data-msg="Drone Services">Drone Services</div>
-    <div class="chip" data-msg="Pricing">Pricing</div>
+    <div class="chip" data-msg="Drone Detection">Drone Detection</div>
     <div class="chip" data-msg="Contact">Contact</div>
   </div>
   <div class="chat-input-row">
@@ -1259,16 +1601,16 @@ if(revealEls.length){
 
 const teamIntroData = {
   ceo: {
-    title: 'Noor Fatima — CEO',
-    text: 'Noor Fatima is the Chief Executive Officer of Intellivora and a passionate innovator in the field of Artificial Intelligence. She is currently pursuing a Bachelor\'s degree in Mechatronics Engineering, combining engineering principles with intelligent technologies to develop practical AI-driven solutions. With a strong foundation in AI, machine learning, and intelligent systems, Noor has designed and developed numerous AI models and solutions across different application domains. As CEO, she leads strategic direction, product innovation, and research initiatives while positioning Intellivora at the forefront of AI innovation.'
+    title: 'Noor Fatima — Founder & CEO',
+    text: 'Noor Fatima is the Founder and Chief Executive Officer of Intvora AI and a passionate innovator in the field of Artificial Intelligence. She is currently pursuing a Bachelor\'s degree in Mechatronics Engineering, combining engineering principles with intelligent technologies to develop practical AI-driven solutions. With a strong foundation in AI, machine learning, and intelligent systems, Noor has designed and developed numerous AI models and solutions across different application domains. As Founder & CEO, she leads strategic direction, product innovation, and research initiatives while positioning Intvora AI at the forefront of AI innovation.'
   },
   cto: {
     title: 'Muhammad Rayan — CTO',
-    text: 'Muhammad Rayan is the Chief Technology Officer of Intellivora and is currently pursuing a Bachelor of Science in Computer Engineering. He has a strong passion for Artificial Intelligence, automation, and software development, with hands-on experience in building AI-powered applications and intelligent systems. As CTO, Rayan leads the company\'s technology strategy, oversees software development, and focuses on delivering innovative AI and automation solutions that help businesses embrace digital transformation.'
+    text: 'Muhammad Rayan is the Chief Technology Officer of Intvora AI and is currently pursuing a Bachelor of Science in Computer Engineering. He has a strong passion for Artificial Intelligence, automation, and software development, with hands-on experience in building AI-powered applications and intelligent systems. As CTO, Rayan leads the company\'s technology strategy, oversees software development, and focuses on delivering innovative AI and automation solutions that help businesses embrace digital transformation.'
   }, 
   consultant: {
-    title: 'Prof. Dr. Imran Babar — Consultant',
-    text: 'Prof. Dr. Imran Babar is a highly accomplished academic and technology expert, serving as a Consultant at Intellivora. He earned his Ph.D. in Computer Science from Malaysia, where he specialized in advanced computing technologies and research. With extensive expertise in Artificial Intelligence, machine learning, and modern computer science, Dr. Babar has contributed to research, innovation, and the practical application of intelligent systems across various domains. As a Consultant at Intellivora, he provides strategic guidance on AI-driven solutions, emerging technologies, and digital transformation initiatives.'
+    title: 'Dr. Imran Babar — Consultant',
+    text: 'Dr. Imran Babar is a highly accomplished academic and technology expert, serving as a Consultant at Intvora AI. He earned his Ph.D. in Computer Science, where he specialized in advanced computing technologies and research. With extensive expertise in Artificial Intelligence, machine learning, and modern computer science, Dr. Babar has contributed to research, innovation, and the practical application of intelligent systems across various domains. As a Consultant at Intvora AI, he provides strategic guidance on AI-driven solutions, emerging technologies, and digital transformation initiatives.'
   }
 
 
@@ -1317,8 +1659,9 @@ if(billingToggle){
 
 function tick(){
   const now=new Date();
-  document.getElementById('clockVal').textContent=now.toUTCString().split(' ')[4]+' UTC';
-  document.getElementById('pingVal').textContent = 10 + Math.floor(Math.random()*18);
+  const cv=document.getElementById('clockVal'), pv=document.getElementById('pingVal');
+  if(cv) cv.textContent=now.toUTCString().split(' ')[4]+' UTC';
+  if(pv) pv.textContent = 10 + Math.floor(Math.random()*18);
 }
 setInterval(tick, 2000); tick();
 
@@ -1336,78 +1679,53 @@ function addMsg(text, who){
   chatBody.appendChild(d); chatBody.scrollTop=chatBody.scrollHeight;
 }
 const botReplies={
-  website: "This website shows Intvora AI's public services: website chatbots, business automations, workflow integrations, aerospace/drone services, pricing packages, and contact options. I only know the public content shown here, not any private or hidden data.",
-  services: "Intellivora AI offers website chat systems, WhatsApp assistants, appointment booking, support/FAQ workflows, lead capture, CRM automation, invoicing automation, and aerospace/drone mission support. Ask me about any of these services.",
-  pricing: "Our packages are:\n• Starter Automation — $499/mo: website chatbot, basic email/CRM automation, WhatsApp integration.\n• Pro Business Automation — $1,499/mo: omni-channel bots, complex workflows, AI receptionist, auto invoicing.\n• Enterprise & Aerospace Custom — Custom quote: custom AI agents, digital twins, drone systems, and mission-grade integrations.",
-  contact: "You can book a consultation through the contact section or email intvoraai@gmail.com. I can also help you choose a package or request a workflow review.",
-  drones: "Our aerospace division includes drone navigation, coordinated UAV systems, satellite image analysis, predictive maintenance, and aerospace digital twins. This is built for commercial and mission-critical operations.",
+  website: "This website shows Intvora AI's public services: website chatbots, business automations, workflow integrations, aerospace and drone services, and contact options. I only know the public content shown here, not any private or hidden data.",
+  services: "Intvora AI offers website chat systems, WhatsApp assistants, appointment booking, support/FAQ workflows, lead capture, CRM automation, invoicing automation, and aerospace/drone mission support. Ask me about any of these services.",
+  pricing: "Every project is scoped to your needs, so we give a custom quote. Please use the contact section or email intvoraai@gmail.com and our team will get back to you.",
+  contact: "You can book a consultation through the contact section or email intvoraai@gmail.com. I can also help you request a workflow review or a drone detection demo.",
+  drones: "We build AI drone detection systems: the camera detects drones automatically, analysing the live feed at high frequency in real time. Our aerospace division also covers drone navigation, coordinated UAV systems, satellite image analysis, predictive maintenance, and digital twins.",
   privateAccess: "I do not have access to private accounts or confidential backend data. I only know what is visible on this website and can answer questions about those public services.",
-  greeting: "Hello 👋 I’m IntVora AI Assistant. I can explain this website, our services, pricing, and contact options. What would you like to know?",
-  fallback: "I can help with this website's services, pricing, chat systems, drone/aerospace offerings, or contact options. Please ask about pricing, services, or how to book a demo."
+  greeting: "Hello 👋 I’m Intvora AI Assistant. I can explain this website, our services, drone detection, and contact options. What would you like to know?",
+  fallback: "I can help with this website's services, chat systems, drone detection and aerospace offerings, or contact options. Please ask about our services, or how to book a demo."
 };
 
 
 function botRespond(userText) {
   const text = String(userText || "").trim().toLowerCase();
   if (!text) return;
-
+  const has = (...words) => words.some(w => new RegExp("\\b" + w + "\\b", "i").test(text));
   let reply;
-
-  if (
-    text.includes("hello") ||
-    text.includes("hi") ||
-    text.includes("hey") ||
-    text.includes("salam")
-  ) {
-    reply = "Hello! Welcome to INTVORAAI. How can we help you today?";
-  } else if (
-    text.includes("service") ||
-    text.includes("chatbot") ||
-    text.includes("automation") ||
-    text.includes("whatsapp")
-  ) {
-    reply = "We offer AI chatbots, WhatsApp integrations, business automation, website solutions, lead capture, and workflow automation.";
-  } else if (
-    text.includes("drone") ||
-    text.includes("aerospace")
-  ) {
-    reply = "We explore AI-powered drone and aerospace solutions. Tell us about your project requirements.";
-  } else if (
-    text.includes("price") ||
-    text.includes("pricing") ||
-    text.includes("cost")
-  ) {
-    reply = "Our pricing depends on your requirements. Please contact our team for a quote.";
-  } else if (
-    text.includes("contact") ||
-    text.includes("demo") ||
-    text.includes("team")
-  ) {
-    reply = "Please visit the contact section on our website to connect with our team.";
-  } else if (
-    text.includes("who are you") ||
-    text.includes("about") ||
-    text.includes("intvora") ||
-    text.includes("intvora")
-  ) {
-    reply = "We are INTVORAAI — Intelligent Virtual Operations and Revolutionary Automation, providing AI solutions for businesses.";
-  } else if (
-    text.includes("thank")
-  ) {
+  // Most specific intents first, so chips like "Drone Services" get the drone answer.
+  if (has("drone","drones","detection","detect","aerospace","uav","satellite")) {
+    reply = botReplies.drones;
+  } else if (has("price","prices","pricing","cost","costs","package","packages","plan","plans","quote","how much")) {
+    reply = botReplies.pricing;
+  } else if (has("contact","demo","book","email","reach","call","consultation")) {
+    reply = botReplies.contact;
+  } else if (has("who are you","about","intvora","intellivora","intvoraai","company","team")) {
+    reply = "We are Intvora AI — Intelligent Virtual Operations and Revolutionary Automation, providing AI chatbots, business automation and aerospace AI solutions.";
+  } else if (has("website","site")) {
+    reply = botReplies.website;
+  } else if (has("private","password","account","confidential","backend")) {
+    reply = botReplies.privateAccess;
+  } else if (has("service","services","smart","chatbot","chatbots","automation","automations","whatsapp","crm","workflow","workflows","lead","leads")) {
+    reply = botReplies.services;
+  } else if (has("thanks","thank","shukriya")) {
     reply = "You're welcome! Let us know if you need anything else.";
+  } else if (has("hello","hi","hey","salam","assalam","hola")) {
+    reply = botReplies.greeting;
   } else {
-    reply = "Thanks for your message! I can help with our services, automation, drone solutions, pricing, and contact information.";
+    reply = botReplies.fallback;
   }
-
-  setTimeout(function () {
-    addMsg(reply, "bot");
-  }, 400);
+  setTimeout(function () { addMsg(reply, "bot"); }, 400);
 }
 
-function sendMessage(text){ if(!text.trim()) return; addMsg(text,'user'); botRespond(text); }
+function sendMessage(text){ text=String(text||'').trim(); if(!text) return; addMsg(text,'user'); botRespond(text); }
 window.sendMessage = sendMessage;
-chatSend.addEventListener('click',()=>{sendMessage(chatInput.value); chatInput.value='';});
-chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){sendMessage(chatInput.value); chatInput.value='';} });
+if(chatSend && chatInput){
+  chatSend.addEventListener('click',()=>{ sendMessage(chatInput.value); chatInput.value=''; chatInput.focus(); });
+  chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.isComposing){ e.preventDefault(); sendMessage(chatInput.value); chatInput.value=''; } });
+}
 document.querySelectorAll('.chip').forEach(chip=> chip.addEventListener('click', ()=> sendMessage(chip.dataset.msg)));
 
 function initNeural(canvasId){
@@ -1562,7 +1880,7 @@ document.querySelectorAll('.btn').forEach(btn=>{
 const copyEmailBtn=document.getElementById('copyEmailBtn');
 if(copyEmailBtn){
   copyEmailBtn.addEventListener('click', ()=>{
-    navigator.clipboard.writeText('intellivoraai@gmail.com').then(()=>{
+    navigator.clipboard.writeText('intvoraai@gmail.com').then(()=>{
       copyEmailBtn.textContent='COPIED ✓';
       copyEmailBtn.style.color='#3CFF9E';
       copyEmailBtn.style.borderColor='#3CFF9E';
@@ -2425,6 +2743,25 @@ document.querySelectorAll('.service-card, .why-card, .case-card').forEach(card=>
   window.addEventListener('resize', resize);
   resize();
   draw();
+})();
+</script>
+<script>
+/* ===== Obsidian UI: mouse-tracking spotlight on cards (visual only) ===== */
+(function(){
+  const sel='.glass,.service-card,.why-card,.team-card,.blog-card,.career-card,.price-card,.testi-card,.case-card,.roi-calc,.intro-card';
+  const cards=document.querySelectorAll(sel);
+  cards.forEach(c=>c.classList.add('spot'));
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  let raf=null,ev=null;
+  document.addEventListener('mousemove',e=>{
+    ev=e; if(raf) return;
+    raf=requestAnimationFrame(()=>{
+      raf=null; const t=ev.target.closest && ev.target.closest(sel); if(!t) return;
+      const r=t.getBoundingClientRect();
+      t.style.setProperty('--sx',(ev.clientX-r.left)+'px');
+      t.style.setProperty('--sy',(ev.clientY-r.top)+'px');
+    });
+  },{passive:true});
 })();
 </script>
 </body>
